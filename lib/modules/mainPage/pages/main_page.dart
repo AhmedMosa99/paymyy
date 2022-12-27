@@ -5,9 +5,10 @@ import 'package:get/get.dart';
 import 'package:paymyy/core/theme/app_colors.dart';
 import 'package:paymyy/core/theme/app_text_styles.dart';
 import 'package:paymyy/core/values/assets/app_icons.dart';
-import 'package:paymyy/modules/mainPage/pages/Tabs/fawateer_tab.dart';
+import 'package:paymyy/modules/mainPage/pages/Tabs/bills_tab/bills_page.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/products_tab.dart';
 
+import '../../../routes/app_routes.dart';
 import '../main_controller.dart';
 import 'Tabs/clients_tab.dart';
 import 'Tabs/home_tab.dart';
@@ -16,9 +17,9 @@ class MainPage extends StatelessWidget {
   final controller = Get.put(MainController());
   List<Widget> screens = [
     HomeTab(),
-    FawateerTab(),
-    ProductsTab(),
-    ClientsTab()
+    const BillsPage(),
+    const ProductsTab(),
+    const ClientsTab()
   ];
 
   @override
@@ -27,16 +28,18 @@ class MainPage extends StatelessWidget {
       builder: (logic) {
         return Scaffold(
           body: screens[controller.currentTab],
-          floatingActionButton: FloatingActionButton(
-            child: Icon(
+          floatingActionButton:controller.isDrawer?SizedBox(): FloatingActionButton(
+            child: const Icon(
               Icons.add,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(AppRoutes.createPill);
+            },
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation
               .centerDocked,
-          bottomNavigationBar: BottomAppBar(
+          bottomNavigationBar: controller.isDrawer?SizedBox():BottomAppBar(
             child: Container(
               margin: EdgeInsetsDirectional.only(bottom: 2.h),
               decoration: BoxDecoration(
@@ -45,12 +48,11 @@ class MainPage extends StatelessWidget {
               ),
               height: 80.h,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  buildBottomTab("home", 0),
-                  buildBottomTab("fawateer", 1),
-                  buildBottomTab("products", 2),
-                  buildBottomTab("clients", 3),
+                  buildBottomTab("home", 0,30,40),
+                  buildBottomTab("fawateer", 1,30,90),
+                  buildBottomTab("products", 2,10,50),
+                  buildBottomTab("clients", 3,10,10),
                 ],
               ),
             ),
@@ -60,7 +62,7 @@ class MainPage extends StatelessWidget {
     );
   }
 
-  Widget buildBottomTab(String name, int index) {
+  Widget buildBottomTab(String name, int index,double start,double end) {
     return GestureDetector(
       onTap: () {
         controller.setCurrentTab(index);
@@ -71,7 +73,7 @@ class MainPage extends StatelessWidget {
         children: [
           Container(
             margin: EdgeInsetsDirectional.only(
-                start: index == 0 ? 20.w : 0.w, end: index == 3 ? 20.w : 0.w),
+                start: start.w, end: end.w),
             child: SvgPicture.asset(
                 controller.currentTab == index
                     ? getSelectedIcon(index)
@@ -84,7 +86,7 @@ class MainPage extends StatelessWidget {
             visible: controller.currentTab == index,
             child: Container(
                 margin:
-                EdgeInsetsDirectional.only(start: index == 0 ? 20.w : 0.w),
+                EdgeInsetsDirectional.only(start: start),
                 child: Text(
                   name.tr,
                   style: AppTextStyles.r10.copyWith(color: AppColors.primary),

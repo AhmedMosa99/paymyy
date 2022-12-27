@@ -12,6 +12,7 @@ import '../../../../data/models/bill_model.dart';
 import '../../../../data/models/electronic_model.dart';
 import '../../main_controller.dart';
 import '../../widgets/bill_widget.dart';
+import '../../widgets/custom_tab_widget.dart';
 
 class HomeTab extends StatefulWidget {
   HomeTab({Key? key}) : super(key: key);
@@ -41,10 +42,10 @@ class _HomeTabState extends State<HomeTab> {
     "avaliable_balance"
   ];
   bool tab1 = true, tab2 = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      onEndDrawerChanged: (x)=>controller.setDrawerOPen(x),
       appBar: AppBar(
         toolbarHeight: 100.h,
         backgroundColor: Colors.transparent,
@@ -115,7 +116,7 @@ class _HomeTabState extends State<HomeTab> {
                   tab2 = false;
                 });
               },
-              child: customTab(tab1, "new_fawateer")),
+              child: CustomTabWidget(isSelected: tab1, name: "new_fawateer")),
           GestureDetector(
               onTap: () {
                 setState(() {
@@ -123,28 +124,13 @@ class _HomeTabState extends State<HomeTab> {
                   tab2 = true;
                 });
               },
-              child: customTab(tab2, "new_requests")),
+              child: CustomTabWidget(isSelected: tab2, name: "new_requests")),
         ],
       ),
     );
   }
 
-  Widget customTab(bool isSelected, String name) {
-    return Container(
-      width: 150.w,
-      height: 30.h,
-      decoration: BoxDecoration(
-        color: isSelected ? AppColors.primary : AppColors.greyf8,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Center(
-          child: Text(
-        name.tr,
-        style: AppTextStyles.b12
-            .copyWith(color: isSelected ? Colors.white : AppColors.black22),
-      )),
-    );
-  }
+
 
   Container buildElectronics() {
     return Container(

@@ -17,8 +17,11 @@ class AppImages{
   static const String test2 = "assets/images/test/2.png";
   static const String test3 = "assets/images/test/3.png";
   static const String test4 = "assets/images/test/4.png";
+  static const String keynet = "assets/images/keynet.png";
   static const String profile = "assets/images/profile.png";
   static const String name = "assets/images/name.png";
+  static const String visa = "assets/images/visa.png";
+  static const String master = "assets/images/master.png";
   static const String passwordReturned = "assets/images/returnPassword.png";
   static const String success = "assets/images/success.png";
   static const String actionPassord = "assets/images/action_passord.png";

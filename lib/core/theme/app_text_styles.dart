@@ -43,6 +43,11 @@ class AppTextStyles {
         fontWeight: FontWeight.w700,
         fontFamily: AppThemes.getFontFamily(),
       );
+  static TextStyle get b20 => TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w700,
+    fontFamily: AppThemes.getFontFamily(),
+  );
 
   static TextStyle get b8 => TextStyle(
         fontSize: 7.5.sp,
@@ -62,7 +67,7 @@ class AppTextStyles {
 
   static TextStyle get b14 => TextStyle(
         fontSize: 14.sp,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w700,
         fontFamily: AppThemes.getFontFamily(),
       );
 
@@ -85,9 +90,14 @@ class AppTextStyles {
 
   static TextStyle get r14 => TextStyle(
         fontSize: 14.sp,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w500,
         fontFamily: AppThemes.getFontFamily(),
       );
+  static TextStyle get r16 => TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: AppThemes.getFontFamily(),
+  );
 
   static TextStyle get rs17 => TextStyle(
         fontSize: 17,

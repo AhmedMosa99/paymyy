@@ -6,4 +6,13 @@ class MainController extends GetxController{
     currentTab=index;
     update();
   }
+  bool isDrawer=false;
+setDrawerOPen(bool x){
+  if(x){
+    isDrawer=true;
+  }else{
+    isDrawer=false;
+  }
+  update();
+}
 }

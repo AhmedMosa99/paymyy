@@ -20,6 +20,7 @@ class AppIcons{
   static const String ipan = "assets/svgs/ipan.svg";
   static const String tab1 = "assets/svgs/tab1.svg";
   static const String check = "assets/svgs/check.svg";
+  static const String search = "assets/svgs/search.svg";
   static const String tab11 = "assets/svgs/tab11.svg";
   static const String tab2 = "assets/svgs/tab2.svg";
   static const String tab22 = "assets/svgs/tab22.svg";
@@ -28,6 +29,8 @@ class AppIcons{
   static const String tab4 = "assets/svgs/tab4.svg";
   static const String tab44 = "assets/svgs/tab44.svg";
   static const String drawer = "assets/svgs/drawer.svg";
+  static const String filter = "assets/svgs/filter.svg";
+  static const String emailLink = "assets/svgs/email_link.svg";
   static const String requests = "assets/svgs/requests.svg";
   static const String paymentLinks = "assets/svgs/payments_links.svg";
   static const String returnedAmounts = "assets/svgs/returned_amounts.svg";

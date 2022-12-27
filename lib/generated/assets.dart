@@ -13,11 +13,14 @@ class Assets {
   static const String imagesBlueIcon = 'assets/images/blue_icon.png';
   static const String imagesEdit = 'assets/images/edit.png';
   static const String imagesIcon = 'assets/images/icon.png';
+  static const String imagesKeynet = 'assets/images/keynet.png';
+  static const String imagesMaster = 'assets/images/master.png';
   static const String imagesName = 'assets/images/name.png';
   static const String imagesProfile = 'assets/images/profile.png';
   static const String imagesReturnPassword = 'assets/images/returnPassword.png';
   static const String imagesSuccess = 'assets/images/success.png';
   static const String imagesTest = 'assets/images/test.png';
+  static const String imagesVisa = 'assets/images/visa.png';
   static const String stepper1 = 'assets/images/stepper/1.png';
   static const String stepper2 = 'assets/images/stepper/2.png';
   static const String stepper3 = 'assets/images/stepper/3.png';
@@ -30,11 +33,14 @@ class Assets {
   static const String svgsEdit = 'assets/svgs/edit.svg';
   static const String svgsEgypt = 'assets/svgs/egypt.svg';
   static const String svgsEmail = 'assets/svgs/email.svg';
+  static const String svgsEmailLink = 'assets/svgs/email_link.svg';
   static const String svgsEmarates = 'assets/svgs/emarates.svg';
   static const String svgsEn = 'assets/svgs/en.svg';
+  static const String svgsFilter = 'assets/svgs/filter.svg';
   static const String svgsHome = 'assets/svgs/Home.svg';
   static const String svgsIpan = 'assets/svgs/ipan.svg';
   static const String svgsJordan = 'assets/svgs/jordan.svg';
+  static const String svgsKeynet = 'assets/svgs/keynet.svg';
   static const String svgsLock = 'assets/svgs/lock.svg';
   static const String svgsName = 'assets/svgs/name.svg';
   static const String svgsOman = 'assets/svgs/oman.svg';
@@ -45,6 +51,7 @@ class Assets {
   static const String svgsRequests = 'assets/svgs/requests.svg';
   static const String svgsReturnedAmounts = 'assets/svgs/returned_amounts.svg';
   static const String svgsSaudia = 'assets/svgs/saudia.svg';
+  static const String svgsSearch = 'assets/svgs/search.svg';
   static const String svgsTab1 = 'assets/svgs/tab1.svg';
   static const String svgsTab11 = 'assets/svgs/tab11.svg';
   static const String svgsTab2 = 'assets/svgs/tab2.svg';

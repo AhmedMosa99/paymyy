@@ -8,4 +8,7 @@ class AppRoutes{
   static String passordReturned = "/passordReturned";
   static String codeCheck = "/codeCheck";
   static String createPassword = "/createPass";
+  static String detailsBill = "/detailsBill";
+  static String billDisplay = "/billDisplay";
+  static String createPill = "/createPill";
 }
