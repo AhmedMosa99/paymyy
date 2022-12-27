@@ -14,6 +14,7 @@ import 'core/values/languages/translations.dart';
 import 'data/providers/local_storage.provider.dart';
 
 void main() {
+  //test  test
   WidgetsFlutterBinding.ensureInitialized();
   GetStorage.init();
   SystemChrome.setPreferredOrientations([
