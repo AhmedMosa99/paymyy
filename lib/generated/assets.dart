@@ -25,7 +25,7 @@ class Assets {
   static const String stepper2 = 'assets/images/stepper/2.png';
   static const String stepper3 = 'assets/images/stepper/3.png';
   static const String stepper4 = 'assets/images/stepper/4.png';
-  static const String svgsAr = 'assets/svgs/ar.svg';
+  static const String svgsAr = 'assets/svgs/ar.dart.svg';
   static const String svgsCall = 'assets/svgs/call.svg';
   static const String svgsCheck = 'assets/svgs/check.svg';
   static const String svgsDrawer = 'assets/svgs/drawer.svg';
@@ -35,7 +35,7 @@ class Assets {
   static const String svgsEmail = 'assets/svgs/email.svg';
   static const String svgsEmailLink = 'assets/svgs/email_link.svg';
   static const String svgsEmarates = 'assets/svgs/emarates.svg';
-  static const String svgsEn = 'assets/svgs/en.svg';
+  static const String svgsEn = 'assets/svgs/en.dart.svg';
   static const String svgsFilter = 'assets/svgs/filter.svg';
   static const String svgsHome = 'assets/svgs/Home.svg';
   static const String svgsIpan = 'assets/svgs/ipan.svg';

@@ -22,7 +22,7 @@ class LocalStrorageProvider {
 
 
   static String get locale {
-    return GetStorage().read<String?>(_locale) ?? "ar";
+    return GetStorage().read<String?>(_locale) ?? "ar.dart";
   }
 
 

@@ -11,10 +11,15 @@ class TextFieldWidget extends StatefulWidget {
   String suffix;
   bool obscure;
   bool isPassord;
+  bool decoration;
+  double vertical,horozontal;
   TextInputType type;
   FormFieldValidator validator;
   TextFieldWidget(
       {this.isPassord=false,
+        this.vertical=11,
+        this.horozontal=35,
+        this.decoration=true,
         required this.validator,
         this.obscure=false,
       this.type = TextInputType.text,
@@ -32,13 +37,13 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(
-          horizontal: 35.w, vertical: 11.h),
+          horizontal: widget.horozontal.w, vertical: widget.vertical.h),
       child: TextFormField(
         validator: widget.validator,
         controller: widget.controller,
         obscureText: widget.isPassord?widget.obscure:false,
         keyboardType: widget.type,
-        decoration: InputDecoration(
+        decoration:widget.decoration?  InputDecoration(
           filled: true,
           fillColor: AppColors.greyf8,
           enabledBorder: buildOutlineInputBorder(),
@@ -75,6 +80,16 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                     fit: BoxFit.scaleDown,
                   ),
               ),
+        ):InputDecoration(
+          border: InputBorder.none,
+          enabledBorder: InputBorder.none,
+          errorBorder: InputBorder.none,
+          focusedErrorBorder:InputBorder.none ,
+          focusedBorder: InputBorder.none,
+          labelText: widget.hintText,
+          labelStyle: AppTextStyles.r12.copyWith(color: AppColors.grey87),
+          contentPadding: EdgeInsetsDirectional.only(start: 16.w),
+          floatingLabelBehavior: FloatingLabelBehavior.never,
         ),
       ),
     );

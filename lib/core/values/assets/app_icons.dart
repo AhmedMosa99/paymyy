@@ -1,6 +1,6 @@
 class AppIcons{
-  static const String ar = "assets/svgs/ar.svg";
-  static const String en = "assets/svgs/en.svg";
+  static const String ar = "assets/svgs/ar.dart.svg";
+  static const String en = "assets/svgs/en.dart.svg";
   static const String lock = "assets/svgs/lock.svg";
   static const String email = "assets/svgs/email.svg";
   static const String dropdown = "assets/svgs/dropdown.svg";

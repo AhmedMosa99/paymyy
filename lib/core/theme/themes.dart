@@ -39,19 +39,19 @@ class AppThemes {
     print(languageModel.languageID);
 
     await LocalStrorageProvider.setLanguage(
-        languageModel.languageCode?.toLowerCase() ?? "en",);
-    Get.updateLocale(Locale(languageModel.languageCode?.toLowerCase() ?? "en"));
+        languageModel.languageCode?.toLowerCase() ?? "en.dart",);
+    Get.updateLocale(Locale(languageModel.languageCode?.toLowerCase() ?? "en.dart"));
   }
 
   static bool isRtl() {
-    if (LocalStrorageProvider.locale == "ar") {
+    if (LocalStrorageProvider.locale == "ar.dart") {
       return true;
     }
     return false;
   }
 
   static String getFontFamily() {
-    if (LocalStrorageProvider.locale == "ar") {
+    if (LocalStrorageProvider.locale == "ar.dart") {
       return GoogleFonts.tajawal().fontFamily ?? "";
     } else {
       return GoogleFonts.roboto().fontFamily ?? "";

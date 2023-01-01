@@ -4,15 +4,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:paymyy/core/theme/app_colors.dart';
+import 'package:paymyy/core/theme/input_validations.dart';
 import 'package:paymyy/core/values/assets/app_icons.dart';
 import 'package:paymyy/core/values/assets/app_images.dart';
 import 'package:paymyy/widgets/button_widget.dart';
+import 'package:paymyy/widgets/text_field_widget.dart';
 
 import '../../../../../core/theme/app_text_styles.dart';
 import '../../../widgets/custom_tile_info_widget.dart';
 
 class DisplayBillPage extends StatelessWidget {
-  const DisplayBillPage({Key? key}) : super(key: key);
+  DisplayBillPage({Key? key}) : super(key: key);
+  TextEditingController c1 = TextEditingController();
+  TextEditingController c2 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +55,7 @@ class DisplayBillPage extends StatelessWidget {
             height: 16.h,
           ),
           emptyCard(
-              height: 224,
+              height: 234.h,
               body: Column(
                 children: [
                   CustomTileInfoWidget(title: "client_name", val: 'سارة'),
@@ -86,7 +90,7 @@ class DisplayBillPage extends StatelessWidget {
       margin: EdgeInsetsDirectional.only(top: 16.h, bottom: 30.h),
       child: emptyCard(
           padding: 0,
-          height: 130,
+          height: 135.h,
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -132,19 +136,33 @@ class DisplayBillPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('YY/MM',
-                        style: AppTextStyles.b12
-                            .copyWith(color: AppColors.grey87)),
+                    Expanded(
+                      child: TextFieldWidget(
+                        type: TextInputType.number,
+                          decoration:false,
+                        horozontal: 0,
+                        vertical: 0,
+                          validator: (value) =>
+                              InputValidations.validateName(value),
+                          controller: c1,
+                          hintText: 'YY/MM'),
+                    ),
                     Container(
                         height: 50.h,
                         child: VerticalDivider(
                           color: AppColors.grey87,
                         )),
-                    Text(
-                      'CVV',
-                      style:
-                          AppTextStyles.b12.copyWith(color: AppColors.grey87),
-                    )
+                    Expanded(
+                      child: TextFieldWidget(
+                          type: TextInputType.number,
+                        decoration:false,
+                        horozontal: 0,
+                        vertical: 0,
+                          validator: (value) =>
+                              InputValidations.validateName(value),
+                          controller: c2,
+                          hintText: 'CVV'),
+                    ),
                   ],
                 ),
               )

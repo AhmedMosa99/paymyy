@@ -74,7 +74,7 @@ class _LanguagePageState extends State<LanguagePage> {
                             children: [
                               buildLanguage(
                                 function: (){
-                                  LocalStrorageProvider.setLanguage('en');
+                                  LocalStrorageProvider.setLanguage('en.dart');
                                   arabic=false;
                                   english=true;
                                   setState(() {
@@ -86,7 +86,7 @@ class _LanguagePageState extends State<LanguagePage> {
                               SizedBox(width: 60.w,),
                               buildLanguage(
                                   function: (){
-                                    LocalStrorageProvider.setLanguage('ar');
+                                    LocalStrorageProvider.setLanguage('ar.dart');
                                     arabic=true;
                                     english=false;
                                     setState(() {

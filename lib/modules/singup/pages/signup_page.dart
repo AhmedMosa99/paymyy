@@ -256,14 +256,14 @@ class _SignupPageState extends State<SignupPage> {
 
   Widget CustomRow(String next,Function() function) {
     BoxDecoration decoration1 =BoxDecoration(
-      color:LocalStrorageProvider.locale=='en'?Colors.white: AppColors.primary,
+      color:LocalStrorageProvider.locale=='en.dart'?Colors.white: AppColors.primary,
       border: Border.all(color: AppColors.grey87, width: 0.5),
       borderRadius: BorderRadius.only(
           topLeft: Radius.circular(10),
           bottomLeft: Radius.circular(10)),
     );
     BoxDecoration decoration2 =  BoxDecoration(
-      color: LocalStrorageProvider.locale=='en'?AppColors.primary: Colors.white,
+      color: LocalStrorageProvider.locale=='en.dart'?AppColors.primary: Colors.white,
       border: Border.all(color: AppColors.grey87, width: 0.5),
       borderRadius: BorderRadius.only(
           topRight: Radius.circular(10),
@@ -282,7 +282,7 @@ class _SignupPageState extends State<SignupPage> {
           child: Container(
             width: 135.w,
             height: 40.h,
-            decoration:LocalStrorageProvider.locale=='en'?decoration1:decoration2,
+            decoration:LocalStrorageProvider.locale=='en.dart'?decoration1:decoration2,
             child: Center(
               child: Text(
                 'previous'.tr,
@@ -296,7 +296,7 @@ class _SignupPageState extends State<SignupPage> {
           child: Container(
             width: 135.w,
             height: 40.h,
-            decoration: LocalStrorageProvider.locale=='en'?decoration2:decoration1,
+            decoration: LocalStrorageProvider.locale=='en.dart'?decoration2:decoration1,
             child: Center(
               child: Text(
                 next.tr,
