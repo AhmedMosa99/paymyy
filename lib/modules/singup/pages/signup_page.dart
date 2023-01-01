@@ -28,11 +28,13 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   RegisterController controller = Get.put(RegisterController());
+
   @override
   void initState() {
     super.initState();
     Get.put(RegisterController());
   }
+
   int currentStep = 0;
 
   @override
@@ -74,7 +76,7 @@ class _SignupPageState extends State<SignupPage> {
               children: [
                 Container(
                   margin: EdgeInsetsDirectional.only(
-                     top: 140.h,  bottom: 20.h, start: 50.w, end: 50.w),
+                      top: 140.h, bottom: 20.h, start: 50.w, end: 50.w),
                   child: Row(
                     children: [
                       buildStepper(model: steps[0]),
@@ -111,9 +113,7 @@ class _SignupPageState extends State<SignupPage> {
                             child: selectProfile(logic),
                           )),
                       PositionedDirectional(
-                          start: 38.w,
-                          bottom: 0.h,
-                          child: getButton())
+                          start: 38.w, bottom: 0.h, child: getButton())
                     ],
                   ),
                 ),
@@ -127,11 +127,12 @@ class _SignupPageState extends State<SignupPage> {
 
   nextStep() {
     steps[currentStep].state = StepperState.Completed;
-    steps[currentStep+1].state = StepperState.current;
+    steps[currentStep + 1].state = StepperState.current;
   }
+
   previousStep() {
     steps[currentStep].state = StepperState.notReached;
-    steps[currentStep-1].state = StepperState.current;
+    steps[currentStep - 1].state = StepperState.current;
   }
 
   Container buildStepper({required StepperModel model}) {
@@ -166,27 +167,28 @@ class _SignupPageState extends State<SignupPage> {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
       ),
-      child:  logic.updatedFile == null?Stack(
-        children: [
-       Image.asset(AppImages.profile)
-             ,
-          PositionedDirectional(
-            bottom: 15.h,
-            start: 0.h,
-            child: Container(
-                width: 22.w,
-                height: 22.h,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
+      child: logic.updatedFile == null
+          ? Stack(
+              children: [
+                Image.asset(AppImages.profile),
+                PositionedDirectional(
+                  bottom: 15.h,
+                  start: 0.h,
+                  child: Container(
+                      width: 22.w,
+                      height: 22.h,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      child: SvgPicture.asset(
+                        AppIcons.edit,
+                        fit: BoxFit.scaleDown,
+                      )),
                 ),
-                child: SvgPicture.asset(
-                  AppIcons.edit,
-                  fit: BoxFit.scaleDown,
-                )),
-          ),
-        ],
-      ):  CircleAvatar(backgroundImage: FileImage(logic.updatedFile!)),
+              ],
+            )
+          : CircleAvatar(backgroundImage: FileImage(logic.updatedFile!)),
     );
   }
 
@@ -204,70 +206,86 @@ class _SignupPageState extends State<SignupPage> {
         return FirstPageWidget();
     }
   }
+
   Widget getButton() {
     switch (currentStep) {
       case 0:
-        return  ButtonWidget(
-          title:  'next'.tr,
-          function: () {
-            if(controller.firstKey.currentState!.validate())
-            setState(() {
-              nextStep();
-              currentStep++;
-            });
-          },
+        return Container(
+          width: 280.w,
+          child: ButtonWidget(
+            horozontal: 0,
+            title: 'next'.tr,
+            function: () {
+              if (controller.firstKey.currentState!.validate())
+                setState(() {
+                  nextStep();
+                  currentStep++;
+                });
+            },
+          ),
         );
       case 1:
-        return CustomRow('next',() {
-          if(controller.secondKey.currentState!.validate())
+        return CustomRow('next', () {
+          if (controller.secondKey.currentState!.validate())
             setState(() {
               nextStep();
               currentStep++;
             });
         });
       case 2:
-        return CustomRow("register",() {
-          if(controller.thirdKey.currentState!.validate())
+        return CustomRow("register", () {
+          if (controller.thirdKey.currentState!.validate())
             setState(() {
               nextStep();
               currentStep++;
             });
         });
       case 3:
-        return ButtonWidget(
-          title:  "log_home".tr,
-          function: () {
-         {
-          Get.offAllNamed(AppRoutes.mainPage);}
-          },
+        return Container(
+          width: 280.w,
+          child: ButtonWidget(
+            horozontal: 0,
+            title: "log_home".tr,
+            function: () {
+              {
+                Get.offAllNamed(AppRoutes.mainPage);
+              }
+            },
+          ),
         );
       default:
-        return ButtonWidget(
-          title:  'next'.tr,
-          function: () {
-            setState(() {
-              nextStep();
-              currentStep++;
-            });
-          },
+        return Container(
+          width: 280.w,
+          child: ButtonWidget(
+            horozontal: 0,
+            title: 'next'.tr,
+            function: () {
+              setState(() {
+                nextStep();
+                currentStep++;
+              });
+            },
+          ),
         );
     }
   }
 
-  Widget CustomRow(String next,Function() function) {
-    BoxDecoration decoration1 =BoxDecoration(
-      color:LocalStrorageProvider.locale=='en'?Colors.white: AppColors.primary,
+  Widget CustomRow(String next, Function() function) {
+    BoxDecoration decoration1 = BoxDecoration(
+      color: LocalStrorageProvider.locale == 'en.dart'
+          ? Colors.white
+          : AppColors.primary,
       border: Border.all(color: AppColors.grey87, width: 0.5),
       borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(10),
-          bottomLeft: Radius.circular(10)),
+          topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
     );
-    BoxDecoration decoration2 =  BoxDecoration(
-      color: LocalStrorageProvider.locale=='en'?AppColors.primary: Colors.white,
+    BoxDecoration decoration2 = BoxDecoration(
+      color: LocalStrorageProvider.locale == 'en.dart'
+          ? AppColors.primary
+          : Colors.white,
       border: Border.all(color: AppColors.grey87, width: 0.5),
       borderRadius: BorderRadius.only(
-          topRight: Radius.circular(10),
-          bottomRight: Radius.circular(10)),
+          topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
     );
     return Row(
       children: [
@@ -277,12 +295,13 @@ class _SignupPageState extends State<SignupPage> {
               previousStep();
               currentStep--;
             });
-
           },
           child: Container(
             width: 135.w,
             height: 40.h,
-            decoration:LocalStrorageProvider.locale=='en'?decoration1:decoration2,
+            decoration: LocalStrorageProvider.locale == 'en.dart'
+                ? decoration1
+                : decoration2,
             child: Center(
               child: Text(
                 'previous'.tr,
@@ -296,7 +315,9 @@ class _SignupPageState extends State<SignupPage> {
           child: Container(
             width: 135.w,
             height: 40.h,
-            decoration: LocalStrorageProvider.locale=='en'?decoration2:decoration1,
+            decoration: LocalStrorageProvider.locale == 'en.dart'
+                ? decoration2
+                : decoration1,
             child: Center(
               child: Text(
                 next.tr,

@@ -87,6 +87,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
         buildTitle("email".tr),
         TextFieldWidget(
+          horozontal: 26,
           validator: (value)=>InputValidations.validateEmail(value),
           controller: controller.emailController,
           hintText: 'example@gmail.com',
@@ -94,6 +95,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
         buildTitle("password".tr),
         TextFieldWidget(
+          horozontal: 26,
           validator: (value)=>InputValidations.validateName(value),
             controller: controller.passwordController,
             hintText: '•••••••',
@@ -110,16 +112,14 @@ class _LoginPageState extends State<LoginPage> {
                   start: 190.w, bottom: 30.h),
               child: Text("forgot_password".tr)),
         ),
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 35.w),
-          child: ButtonWidget(
-              title: "login".tr,
-              function: () {
-                if(controller.loginKey.currentState!.validate()){
-                  Get.offAllNamed(AppRoutes.mainPage);
-                }
-              }),
-        ),
+        ButtonWidget(
+          horozontal: 26,
+            title: "login".tr,
+            function: () {
+              if(controller.loginKey.currentState!.validate()){
+                Get.offAllNamed(AppRoutes.mainPage);
+              }
+            }),
       ],
     ),);
   }

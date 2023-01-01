@@ -10,6 +10,7 @@ class AppThemes {
   // there will be more code here and if too much will be separated in different files
   static ThemeData dark = ThemeData(
       brightness: Brightness.dark,
+      canvasColor: Colors.grey,
       primaryColor: AppColors.primary,
       highlightColor: AppColors.secondary,
       colorScheme: ColorScheme.dark(
@@ -17,6 +18,8 @@ class AppThemes {
       fontFamily: getFontFamily());
 
   static ThemeData light = ThemeData(
+    scaffoldBackgroundColor: Colors.white,
+    canvasColor: Colors.grey,
       brightness: Brightness.light,
       highlightColor: AppColors.secondary,
       colorScheme: ColorScheme.light(
@@ -39,19 +42,19 @@ class AppThemes {
     print(languageModel.languageID);
 
     await LocalStrorageProvider.setLanguage(
-        languageModel.languageCode?.toLowerCase() ?? "en",);
-    Get.updateLocale(Locale(languageModel.languageCode?.toLowerCase() ?? "en"));
+        languageModel.languageCode?.toLowerCase() ?? "en.dart",);
+    Get.updateLocale(Locale(languageModel.languageCode?.toLowerCase() ?? "en.dart"));
   }
 
   static bool isRtl() {
-    if (LocalStrorageProvider.locale == "ar") {
+    if (LocalStrorageProvider.locale == "ar.dart") {
       return true;
     }
     return false;
   }
 
   static String getFontFamily() {
-    if (LocalStrorageProvider.locale == "ar") {
+    if (LocalStrorageProvider.locale == "ar.dart") {
       return GoogleFonts.tajawal().fontFamily ?? "";
     } else {
       return GoogleFonts.roboto().fontFamily ?? "";

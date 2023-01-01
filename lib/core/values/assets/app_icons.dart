@@ -32,6 +32,10 @@ class AppIcons{
   static const String filter = "assets/svgs/filter.svg";
   static const String emailLink = "assets/svgs/email_link.svg";
   static const String requests = "assets/svgs/requests.svg";
+  static const String add = "assets/svgs/add.svg";
+  static const String date = "assets/svgs/date.svg";
+  static const String file = "assets/svgs/file.svg";
+  static const String advance = "assets/svgs/advance.svg";
   static const String paymentLinks = "assets/svgs/payments_links.svg";
   static const String returnedAmounts = "assets/svgs/returned_amounts.svg";
 

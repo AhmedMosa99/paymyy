@@ -118,7 +118,13 @@ Map<String, String> ar = {
   "how_pay":"كيف تريد طريقة الدفع ؟",
   "bill_no":"رقم الفاتورة",
   "card_owener_name":"اسم صاحب البطاقة ",
-  "card_no":"رقم البطاقة"
+  "card_no":"رقم البطاقة",
+  "bill_create":"انشاء الفاتورة",
+  "sms_massage":"رسائل قصيرة",
+  "watsapp":"واتس اب",
+  "link":"رابط",
+      "alemail":"بريد الكتروني",
+  "advance":"خيارات متقدمة"
 
 
 

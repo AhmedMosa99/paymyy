@@ -111,6 +111,15 @@ Map<String, String> en = {
   "bill_recurrence":"تكرار الفاتورة",
   "resend":"اعادة ارسال",
   "cancel":"الغاء",
-  "pay_now":"ادفع الأن"
-
+  "pay_now":"ادفع الأن",
+  "how_pay":"كيف تريد طريقة الدفع ؟",
+  "bill_no":"رقم الفاتورة",
+  "card_owener_name":"اسم صاحب البطاقة ",
+  "card_no":"رقم البطاقة",
+  "bill_create":"Bill Creation",
+  "sms_massage":"رسائل قصيرة",
+  "watsapp":"واتس اب",
+  "link":"رابط"
+  , "alemail":"بريد الكتروني",
+  "advance":"خيارات متقدمة"
 };
