@@ -86,6 +86,11 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
     fontFamily: AppThemes.getFontFamily(),
   );
+  static TextStyle get r8 => TextStyle(
+    fontSize: 8.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: AppThemes.getFontFamily(),
+  );
 
   static TextStyle get r20 => TextStyle(
         fontSize: 20.sp,

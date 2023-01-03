@@ -3,10 +3,8 @@ Map<String, String> ar = {
   "choose_language": 'اختر اللغة التي تريدها',
   "skip": "تخطي",
   'create_links': 'انشاء' + '\n' + ' روابط دفع فواتير',
-  "payment_collection":
-      'تحصيل المدفوعات' + '\n' + ' في الوقت و المكان الذي تريدهما',
-  "accept_payments":
-      'قبول المدفوعات' + '\n' + ' المحلية و الاقليمية و العالمية',
+  "payment_collection": 'تحصيل المدفوعات' + '\n' + ' في الوقت و المكان الذي تريدهما',
+  "accept_payments": 'قبول المدفوعات' + '\n' + ' المحلية و الاقليمية و العالمية',
   "save_payments": ' حفظ' + '\n' + 'سجل المدفوعات لنشاطك التجاري',
   "sale_via_internet": ' البيع' + '\n' + 'عبر الانترنت بكل سهولة',
   'shipping_products': ' شحن المنتجات' + '\n' + ' من خلال دي اتش ال و ارامكس',
@@ -49,8 +47,7 @@ Map<String, String> ar = {
   "code_enter": "ادخل الرمز",
   "continue": "استمر",
   "pass_restore": "استعادة كلمة المرور",
-  "pas_instructions":
-      "الرجاء ادخال البريد الإلكتروني الخاص \n  بك لاسترجاع كلمة المرور",
+  "pas_instructions": "الرجاء ادخال البريد الإلكتروني الخاص \n  بك لاسترجاع كلمة المرور",
   "send": "ارسال",
   "single": "فردي",
   "organization": "شركات",
@@ -123,8 +120,70 @@ Map<String, String> ar = {
   "sms_massage":"رسائل قصيرة",
   "watsapp":"واتس اب",
   "link":"رابط",
-      "alemail":"بريد الكتروني",
-  "advance":"خيارات متقدمة"
+  "alemail":"بريد الكتروني",
+  "advance":"خيارات متقدمة",
+  "fixed":"ثابتة",
+  "percentage":"نسبة",
+  "client_reference":"مرجع العميل",
+  "notes":"الملاحظات",
+  "lang":"اللغة",
+  "english":"انجليزي",
+  "arabic":"عربي",
+  "terms_condtions":"أضف الشروط والأحكام",
+  "add_product":"أضف منتج",
+  "price":"السعر",
+  "number":"العدد",
+  "add":"أضف",
+  "save":"حفظ",
+  "product_name":"اسم المنتج",
+  "product_creation":"انشاء منتج",
+  "product_info":"معلومات المنتج",
+  "category":"الصنف *",
+  "arabic_product":"اسم المنتج بالعربي ",
+  "english_product":"اسم المنتج بالانجليزي ",
+  "amount":"الكمية",
+  "english_desc":"الوصف بالانجليزي",
+  "arabic_desc":"الوصف بالعربي",
+  "active":"فعال ؟",
+  "new_client":"عميل جديد",
+  "bank_details":"تفاصيل البنك",
+  "add_client":"اضافة عميل",
+  "request_type":"نوع الطلب",
+  "request_state":"حالة الطلب",
+  "not_excute":"لم ينفذ",
+  "request_reference":"مرجع الطلب",
+  "request_val":"قيمة  الطلب",
+  "address_type":"نوع العنوان",
+  "client_info_details":"تفاصيل معلومات العميل",
+  "charge_money":"تكلفة الشحن",
+  "fees_client":"رسوم خدمة العملاء",
+  "seller_fees":"رسوم خدمة البائع",
+  "payments_link_details":"تفاصيل رابط الدفع",
+  "link_address":"عنوان رابط الدفع *",
+  "link_addres":"عنوان رابط الدفع ",
+  "value_details":"تفاصيل قيمة الفاتورة",
+  "min":"أقل قيمة",
+  "max":"اعلى قيمة",
+  "link_create":"انشاء الرابط",
+  "bill_reference_details":"مرجع رابط الفاتورة",
+  "payment_link":"رابط الدفع ",
+  "active?":"مفعل ؟",
+  "return_amount":"اعادة المبلغ",
+  "full_amount":"المبلغ",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

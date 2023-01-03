@@ -8,10 +8,10 @@ import 'package:paymyy/core/values/assets/app_icons.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/bills_tab/bills_page.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/products_tab.dart';
 
-import '../../../routes/app_routes.dart';
-import '../main_controller.dart';
-import 'Tabs/clients_tab.dart';
-import 'Tabs/home_tab.dart';
+import '../../../../routes/app_routes.dart';
+import '../../main_controller.dart';
+import '../Tabs/clientTab/clients_tab.dart';
+import '../Tabs/home_tab.dart';
 
 class MainPage extends StatelessWidget {
   final controller = Get.put(MainController());

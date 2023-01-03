@@ -21,6 +21,7 @@ class AppImages{
   static const String profile = "assets/images/profile.png";
   static const String name = "assets/images/name.png";
   static const String visa = "assets/images/visa.png";
+  static const String productTest = "assets/images/product_test.jpg";
   static const String date = "assets/images/date.png";
   static const String master = "assets/images/master.png";
   static const String passwordReturned = "assets/images/returnPassword.png";

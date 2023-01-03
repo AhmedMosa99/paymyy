@@ -8,6 +8,9 @@ class TextFieldWidget extends StatefulWidget {
   String hintText;
   TextEditingController controller;
   String prefix;
+  Color fillColor,borderColor;
+  bool blackLabel;
+  int maxLines;
   String suffix;
   bool obscure;
   bool isPassord;
@@ -15,9 +18,16 @@ class TextFieldWidget extends StatefulWidget {
   double vertical,horozontal;
   TextInputType type;
   FormFieldValidator validator;
+  Widget? suffexWidget,prefexWidget;
   TextFieldWidget(
       {this.isPassord=false,
+        this.suffexWidget,
+        this.prefexWidget,
+        this.borderColor=const Color(0xffF8F8F8),
         this.vertical=11,
+        this.maxLines=1,
+        this.blackLabel=false,
+        this.fillColor= const Color(0xffF8F8F8),
         this.horozontal=35,
         this.decoration=true,
         required this.validator,
@@ -39,13 +49,15 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       margin: EdgeInsets.symmetric(
           horizontal: widget.horozontal.w, vertical: widget.vertical.h),
       child: TextFormField(
+        maxLines: widget.maxLines,
         validator: widget.validator,
         controller: widget.controller,
         obscureText: widget.isPassord?widget.obscure:false,
         keyboardType: widget.type,
         decoration:widget.decoration?  InputDecoration(
+          alignLabelWithHint: true,
           filled: true,
-          fillColor: AppColors.greyf8,
+          fillColor:widget.fillColor,
           enabledBorder: buildOutlineInputBorder(),
           border: buildOutlineInputBorder(),
           errorBorder: buildOutlineInputBorder(),
@@ -54,8 +66,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           labelText: widget.hintText,
           labelStyle: widget.obscure?AppTextStyles.r20.copyWith(color: AppColors.greyb4):AppTextStyles.r12,
           floatingLabelBehavior: FloatingLabelBehavior.never,
-          prefixIcon: widget.prefix.length == 0
-              ? SizedBox()
+          prefixIcon:widget.prefexWidget!=null?widget.prefexWidget: widget.prefix.length == 0
+              ? null
               : widget.prefix.contains('svg')
                   ? SvgPicture.asset(
                       widget.prefix,
@@ -65,11 +77,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       widget.prefix,
                       fit: BoxFit.scaleDown,
                     ),
-          suffixIcon: widget.prefix.length == 0
-              ? SizedBox()
-              : GestureDetector(
+          suffixIcon: widget.suffexWidget!=null?widget.suffexWidget
+              :widget.suffix.length!=0? GestureDetector(
             onTap: (){
-
               widget.obscure=!widget.obscure;
               setState(() {
               });
@@ -79,7 +89,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                     widget.suffix,
                     fit: BoxFit.scaleDown,
                   ),
-              ),
+              ):null
         ):InputDecoration(
           border: InputBorder.none,
           enabledBorder: InputBorder.none,
@@ -87,7 +97,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           focusedErrorBorder:InputBorder.none ,
           focusedBorder: InputBorder.none,
           labelText: widget.hintText,
-          labelStyle: AppTextStyles.r12.copyWith(color: AppColors.grey87),
+          labelStyle: AppTextStyles.r12.copyWith(color:widget.blackLabel?Colors.black: AppColors.grey87),
           contentPadding: EdgeInsetsDirectional.only(start: 16.w),
           floatingLabelBehavior: FloatingLabelBehavior.never,
         ),
@@ -98,7 +108,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
   OutlineInputBorder buildOutlineInputBorder() {
     return OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.greyf8, width: 1),
+          borderSide: BorderSide(color: widget.borderColor, width: 1),
         );
   }
 }

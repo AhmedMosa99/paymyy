@@ -103,11 +103,16 @@ class _LanguagePageState extends State<LanguagePage> {
                   ),
                   PositionedDirectional(
                     bottom: 0.h,
-                    start: 11.w,
-                    child: ButtonWidget(title: 'next'.tr,function: (){
-                      Get.updateLocale(Locale(LocalStrorageProvider.locale));
-                      LocalStrorageProvider.setEnter(true);
-                      Get.toNamed(AppRoutes.boarding);}),
+                    start: 5.w,
+                    child: Container(
+                      width: 280.w,
+                      child: ButtonWidget(
+                        horozontal: 10,
+                          title: 'next'.tr,function: (){
+                        Get.updateLocale(Locale(LocalStrorageProvider.locale));
+                        LocalStrorageProvider.setEnter(true);
+                        Get.toNamed(AppRoutes.boarding);}),
+                    ),
                   )
                 ],
               ),

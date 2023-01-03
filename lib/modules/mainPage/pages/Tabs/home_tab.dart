@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:paymyy/core/theme/app_colors.dart';
 import 'package:paymyy/core/theme/app_text_styles.dart';
 import 'package:paymyy/core/values/assets/app_icons.dart';
+import 'package:paymyy/routes/app_routes.dart';
 
 import '../../../../core/values/assets/app_images.dart';
 import '../../../../data/models/bill_model.dart';
@@ -243,6 +244,7 @@ class _HomeTabState extends State<HomeTab> {
       return Container(
         width: ScreenUtil.defaultSize.width * 0.55,
         child: Drawer(
+          backgroundColor: Colors.white,
           child: Column(
             children: [
               SizedBox(
@@ -266,8 +268,19 @@ class _HomeTabState extends State<HomeTab> {
                   children: drawers.entries
                       .map((e) => GestureDetector(
                             onTap: () {
+                              if(e.key== "requests"){
+                                Get.toNamed(AppRoutes.requests);
+                                Scaffold.of(context).closeEndDrawer();
+                              } else if(e.key== "payment_links"){
+                                Get.toNamed(AppRoutes.paymentLinks);
+                                Scaffold.of(context).closeEndDrawer();
+                              }
+                              else if(e.key==  "returned_amounts"){
+                                Get.toNamed(AppRoutes.returnedAmounts);
+                                Scaffold.of(context).closeEndDrawer();
+                              } else {
                               controller.setCurrentTab(getIndex(e.key));
-                              Scaffold.of(context).closeEndDrawer();
+                              Scaffold.of(context).closeEndDrawer();}
                             },
                             child: Container(
                               margin: EdgeInsetsDirectional.only(bottom: 40.h),

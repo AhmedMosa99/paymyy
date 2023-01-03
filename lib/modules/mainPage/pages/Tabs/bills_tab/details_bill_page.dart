@@ -44,7 +44,7 @@ class DetailsBillPage extends StatelessWidget {
                     GestureDetector(
                      onTap: (){
                        Get.back();
-                       Get.toNamed(AppRoutes.createPill);
+                       Get.toNamed(AppRoutes.redunduncePill);
                      } ,
                         child: Text("bill_recurrence".tr,style: AppTextStyles.b12,)),
                     Spacer(),
