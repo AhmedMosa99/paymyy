@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class ProfileController extends GetxController{
   bool company=false;
-  bool customer=true;
+  bool customer=false;
   bool together=true;
   changeRadioCompany(){
     company=true;
