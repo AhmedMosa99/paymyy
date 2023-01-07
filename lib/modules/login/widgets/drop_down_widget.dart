@@ -1,11 +1,11 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:paymyy/core/theme/app_colors.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:paymyy/core/theme/app_text_styles.dart';
 import 'package:paymyy/core/values/assets/app_icons.dart';
-import 'package:get/get.dart';
 
 import '../../../data/models/flag_model.dart';
 
@@ -55,7 +55,9 @@ class _DropDownWidgetState extends State<DropDownWidget> {
                     ),
                     Text(
                       e.name.tr,
-                      style: e.name.tr.length>7?AppTextStyles.b8:AppTextStyles.b12,
+                      style: e.name.tr.length > 7
+                          ? AppTextStyles.b8
+                          : AppTextStyles.b12,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],

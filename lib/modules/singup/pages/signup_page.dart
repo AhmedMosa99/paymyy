@@ -51,7 +51,7 @@ class _SignupPageState extends State<SignupPage> {
           style: AppTextStyles.mb20.copyWith(color: Colors.black),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
@@ -66,7 +66,7 @@ class _SignupPageState extends State<SignupPage> {
         builder: (logic) {
           return Container(
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(
                       AppImages.background,
@@ -80,14 +80,14 @@ class _SignupPageState extends State<SignupPage> {
                   child: Row(
                     children: [
                       buildStepper(model: steps[0]),
-                      Expanded(
+                      const Expanded(
                           child: Divider(
                         color: Colors.grey,
                       )),
                       buildStepper(model: steps[1]),
-                      Expanded(child: Divider(color: Colors.grey)),
+                      const Expanded(child: Divider(color: Colors.grey)),
                       buildStepper(model: steps[2]),
-                      Expanded(child: Divider(color: Colors.grey)),
+                      const Expanded(child: Divider(color: Colors.grey)),
                       buildStepper(model: steps[3]),
                     ],
                   ),
@@ -164,7 +164,7 @@ class _SignupPageState extends State<SignupPage> {
     return Container(
       width: 100.w,
       height: 100.h,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
       ),
       child: logic.updatedFile == null
@@ -177,7 +177,7 @@ class _SignupPageState extends State<SignupPage> {
                   child: Container(
                       width: 22.w,
                       height: 22.h,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.white,
                       ),
@@ -195,15 +195,15 @@ class _SignupPageState extends State<SignupPage> {
   Widget getBody() {
     switch (currentStep) {
       case 0:
-        return FirstPageWidget();
+        return const FirstPageWidget();
       case 1:
         return SecondPageWidget();
       case 2:
         return ThirdPageWidget();
       case 3:
-        return FourPageWidget();
+        return const FourPageWidget();
       default:
-        return FirstPageWidget();
+        return const FirstPageWidget();
     }
   }
 
@@ -276,16 +276,16 @@ class _SignupPageState extends State<SignupPage> {
           ? Colors.white
           : AppColors.primary,
       border: Border.all(color: AppColors.grey87, width: 0.5),
-      borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
+      borderRadius: const BorderRadiusDirectional.only(
+          topEnd: Radius.circular(10), bottomEnd: Radius.circular(10)),
     );
     BoxDecoration decoration2 = BoxDecoration(
       color: LocalStrorageProvider.locale == 'en.dart'
           ? AppColors.primary
           : Colors.white,
       border: Border.all(color: AppColors.grey87, width: 0.5),
-      borderRadius: BorderRadius.only(
-          topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+      borderRadius: const BorderRadiusDirectional.only(
+          topStart: Radius.circular(10), bottomStart: Radius.circular(10)),
     );
     return Row(
       children: [

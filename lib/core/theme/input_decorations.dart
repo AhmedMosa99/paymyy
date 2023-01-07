@@ -1,1 +1,1 @@
-class InputDecorations{}
+class InputDecorations {}

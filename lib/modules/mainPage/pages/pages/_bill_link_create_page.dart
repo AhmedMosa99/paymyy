@@ -40,7 +40,7 @@ class _BillLinkCreatePageState extends State<BillLinkCreatePage> {
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_outlined,
             color: Colors.black,
           ),
@@ -63,7 +63,7 @@ class _BillLinkCreatePageState extends State<BillLinkCreatePage> {
           GestureDetector(
               onTap: () {
                 Get.bottomSheet(
-                  SortSheetWidget(),
+                  const SortSheetWidget(),
                   ignoreSafeArea: true,
                   barrierColor: Colors.black26,
                   isScrollControlled: true,
@@ -134,38 +134,39 @@ class _BillLinkCreatePageState extends State<BillLinkCreatePage> {
                 hintText: "link_address".tr,
                 validator: (value) => InputValidations.validateName(value)),
             TextFieldWidget(
-              prefexWidget:  Container(
-                width: 60.w,
-                height: 55.h,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadiusDirectional.only(
-                      topStart: Radius.circular(10), bottomStart: Radius.circular(5)),
-                  color: AppColors.grey87.withOpacity(0.4),
+                prefexWidget: Container(
+                  width: 60.w,
+                  height: 55.h,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadiusDirectional.only(
+                        topStart: Radius.circular(10),
+                        bottomStart: Radius.circular(5)),
+                    color: AppColors.grey87.withOpacity(0.4),
+                  ),
+                  child: DropdownButton2(
+                      icon: const SizedBox(),
+                      underline: const SizedBox(),
+                      value: selected,
+                      onChanged: (x) {
+                        setState(() {
+                          selected = x!;
+                        });
+                      },
+                      items: items
+                          .map((e) => DropdownMenuItem(
+                              value: e,
+                              child: Text(
+                                e,
+                                style: AppTextStyles.b10
+                                    .copyWith(color: Colors.black),
+                              )))
+                          .toList()),
                 ),
-                child: DropdownButton2(
-                    icon: const SizedBox(),
-                    underline: const SizedBox(),
-                    value: selected,
-                    onChanged: (x) {
-                      setState(() {
-                        selected = x!;
-                      });
-                    },
-                    items: items
-                        .map((e) => DropdownMenuItem(
-                        value: e,
-                        child: Text(
-                          e,
-                          style:
-                          AppTextStyles.b10.copyWith(color: Colors.black),
-                        )))
-                        .toList()),
-              ),
                 suffix: AppIcons.dropdown,
                 horozontal: 16,
                 controller: value,
                 type: TextInputType.number,
-                hintText:"  "+ "pill_value".tr,
+                hintText: "  " + "pill_value".tr,
                 validator: (value) => InputValidations.validateName(value)),
             Row(
               children: [

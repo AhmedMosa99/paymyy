@@ -24,11 +24,14 @@ class _SplashPageState extends State<SplashPage> {
   @override
   initState() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
-    Future.delayed(Duration(seconds: 3)).then((value) {
-      LocalStrorageProvider.isEnter ?Get.offNamed(AppRoutes.login):Get.offNamed(AppRoutes.language);
+    Future.delayed(const Duration(seconds: 3)).then((value) {
+      LocalStrorageProvider.isEnter
+          ? Get.offNamed(AppRoutes.login)
+          : Get.offNamed(AppRoutes.language);
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(

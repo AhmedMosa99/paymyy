@@ -18,8 +18,8 @@ class AppThemes {
       fontFamily: getFontFamily());
 
   static ThemeData light = ThemeData(
-    scaffoldBackgroundColor: Colors.white,
-    canvasColor: Colors.grey,
+      scaffoldBackgroundColor: Colors.white,
+      canvasColor: Colors.grey,
       brightness: Brightness.light,
       highlightColor: AppColors.secondary,
       colorScheme: ColorScheme.light(
@@ -42,8 +42,10 @@ class AppThemes {
     print(languageModel.languageID);
 
     await LocalStrorageProvider.setLanguage(
-        languageModel.languageCode?.toLowerCase() ?? "en.dart",);
-    Get.updateLocale(Locale(languageModel.languageCode?.toLowerCase() ?? "en.dart"));
+      languageModel.languageCode?.toLowerCase() ?? "en.dart",
+    );
+    Get.updateLocale(
+        Locale(languageModel.languageCode?.toLowerCase() ?? "en.dart"));
   }
 
   static bool isRtl() {

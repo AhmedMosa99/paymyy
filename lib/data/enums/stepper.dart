@@ -1,1 +1,1 @@
-enum StepperState{Completed ,notReached, current}
+enum StepperState { Completed, notReached, current }

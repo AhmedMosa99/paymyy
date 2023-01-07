@@ -24,7 +24,7 @@ class DisplayBillPage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 90.h,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
@@ -117,7 +117,7 @@ class DisplayBillPage extends StatelessWidget {
                           AppTextStyles.b12.copyWith(color: AppColors.grey87),
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Image.asset(AppImages.visa),
                   SizedBox(
                     width: 10.w,
@@ -138,10 +138,10 @@ class DisplayBillPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: TextFieldWidget(
-                        type: TextInputType.number,
-                          decoration:false,
-                        horozontal: 0,
-                        vertical: 0,
+                          type: TextInputType.number,
+                          decoration: false,
+                          horozontal: 0,
+                          vertical: 0,
                           validator: (value) =>
                               InputValidations.validateName(value),
                           controller: c1,
@@ -155,9 +155,9 @@ class DisplayBillPage extends StatelessWidget {
                     Expanded(
                       child: TextFieldWidget(
                           type: TextInputType.number,
-                        decoration:false,
-                        horozontal: 0,
-                        vertical: 0,
+                          decoration: false,
+                          horozontal: 0,
+                          vertical: 0,
                           validator: (value) =>
                               InputValidations.validateName(value),
                           controller: c2,
@@ -248,7 +248,7 @@ class DisplayBillPage extends StatelessWidget {
               color: Colors.grey.shade400,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Center(
+            child: const Center(
               child: Icon(
                 Icons.image_outlined,
                 size: 50,

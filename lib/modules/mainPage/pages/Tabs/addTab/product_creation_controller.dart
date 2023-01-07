@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ProductCreationController extends GetxController{
+class ProductCreationController extends GetxController {
   File? updatedFile;
 
   selectProductImage() async {

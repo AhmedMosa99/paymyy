@@ -17,7 +17,7 @@ class ReturnedAmountsPage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_outlined,
             color: Colors.black,
           ),
@@ -40,7 +40,7 @@ class ReturnedAmountsPage extends StatelessWidget {
           GestureDetector(
               onTap: () {
                 Get.bottomSheet(
-                  SortSheetWidget(),
+                  const SortSheetWidget(),
                   ignoreSafeArea: true,
                   barrierColor: Colors.black26,
                   isScrollControlled: true,
@@ -77,7 +77,7 @@ class ReturnedAmountsPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ListTile(
-                    visualDensity: VisualDensity(vertical: -4),
+                    visualDensity: const VisualDensity(vertical: -4),
                     leading: Text(
                       'سارة محمد الخالد',
                       style: AppTextStyles.b12,
@@ -93,7 +93,7 @@ class ReturnedAmountsPage extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 12.w),
+                              margin: EdgeInsets.symmetric(horizontal: 12.w),
                               child: SvgPicture.asset(AppIcons.returned)),
                           Text(
                             "return_amount".tr,

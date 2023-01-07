@@ -32,7 +32,7 @@ class CodeCheckPage extends StatelessWidget {
           style: AppTextStyles.mb20.copyWith(color: Colors.black),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
@@ -44,7 +44,7 @@ class CodeCheckPage extends StatelessWidget {
       ),
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
                   AppImages.background,
@@ -100,13 +100,17 @@ class CodeCheckPage extends StatelessWidget {
               ],
             ),
             PositionedDirectional(
-              bottom: 350.h,
-              start: 55.w,
-              child: ButtonWidget(
-                  title: "continue".tr,
-                  function: () {
-                    Get.toNamed(AppRoutes.createPassword);
-                  }),
+              bottom: 330.h,
+              start: 45.w,
+              child: Container(
+                width: 280.w,
+                child: ButtonWidget(
+                    horozontal: 0,
+                    title: "continue".tr,
+                    function: () {
+                      Get.toNamed(AppRoutes.createPassword);
+                    }),
+              ),
             )
           ],
         ),

@@ -2,8 +2,8 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:paymyy/modules/login/pages/code_check_page.dart';
 import 'package:paymyy/modules/login/pages/create_password_page.dart';
 import 'package:paymyy/modules/login/pages/passord_returned_page.dart';
-import 'package:paymyy/modules/mainPage/pages/Tabs/bills_tab/details_bill_page.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/addTab/product_create_page.dart';
+import 'package:paymyy/modules/mainPage/pages/Tabs/bills_tab/details_bill_page.dart';
 import 'package:paymyy/modules/on_boarding/pages/on_boarding_page.dart';
 import 'package:paymyy/modules/splash/pages/language_page.dart';
 
@@ -22,7 +22,7 @@ import '../modules/singup/pages/signup_page.dart';
 import '../modules/splash/pages/splash_page.dart';
 import 'app_routes.dart';
 
-class AppPages{
+class AppPages {
   static List<GetPage> pages = [
     GetPage(name: AppRoutes.splash, page: () => SplashPage()),
     GetPage(name: AppRoutes.language, page: () => LanguagePage()),
@@ -41,7 +41,8 @@ class AppPages{
     GetPage(name: AppRoutes.requests, page: () => RequestsPage()),
     GetPage(name: AppRoutes.returnedAmounts, page: () => ReturnedAmountsPage()),
     GetPage(name: AppRoutes.paymentLinks, page: () => PaymentLinkPage()),
-    GetPage(name: AppRoutes.detailsPillRequest, page: () => DetailsRequestPage()),
+    GetPage(
+        name: AppRoutes.detailsPillRequest, page: () => DetailsRequestPage()),
     GetPage(name: AppRoutes.pillLinkCreate, page: () => BillLinkCreatePage()),
     GetPage(name: AppRoutes.pillLinkDetails, page: () => BillLinkDetailsPage()),
   ];

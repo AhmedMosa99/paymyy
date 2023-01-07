@@ -17,7 +17,7 @@ class DetailsRequestPage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 90.h,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
@@ -34,40 +34,54 @@ class DetailsRequestPage extends StatelessWidget {
         centerTitle: true,
         actions: [
           PopupMenuButton<int>(
-              padding: EdgeInsetsDirectional.only(end: 10),
-              icon: Icon(Icons.more_vert,color: Colors.black,),
+              padding: const EdgeInsetsDirectional.only(end: 10),
+              icon: const Icon(
+                Icons.more_vert,
+                color: Colors.black,
+              ),
               itemBuilder: (context) => [
-                PopupMenuItem(
-                  value: 1,
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                          onTap: (){
-                            Get.back();
-                            Get.toNamed(AppRoutes.redunduncePill);
-                          } ,
-                          child: Text("bill_recurrence".tr,style: AppTextStyles.b12,)),
-                      Spacer(),
-                      GestureDetector(
-                          onTap: (){
-                            Get.back();
-                          },
-                          child: Icon(Icons.close,color: Colors.black,)),
-                    ],
-                  ),
-                ),
-                PopupMenuItem(
-                  value: 2,
-                  child: Text(  "resend".tr,style: AppTextStyles.b12,),
-                ),
-                PopupMenuItem(
-                  value: 3,
-                  child: Text(  "cancel".tr,style: AppTextStyles.b12,),
-                ),
-              ],
-              offset: Offset(0, 10),
-              color: Colors.white
-          ),
+                    PopupMenuItem(
+                      value: 1,
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                              onTap: () {
+                                Get.back();
+                                Get.toNamed(AppRoutes.redunduncePill);
+                              },
+                              child: Text(
+                                "bill_recurrence".tr,
+                                style: AppTextStyles.b12,
+                              )),
+                          const Spacer(),
+                          GestureDetector(
+                              onTap: () {
+                                Get.back();
+                              },
+                              child: const Icon(
+                                Icons.close,
+                                color: Colors.black,
+                              )),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 2,
+                      child: Text(
+                        "resend".tr,
+                        style: AppTextStyles.b12,
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 3,
+                      child: Text(
+                        "cancel".tr,
+                        style: AppTextStyles.b12,
+                      ),
+                    ),
+                  ],
+              offset: const Offset(0, 10),
+              color: Colors.white),
         ],
       ),
       body: SingleChildScrollView(
@@ -88,18 +102,18 @@ class DetailsRequestPage extends StatelessWidget {
                 val: "غير مودعة",
                 color: AppColors.red0e),
             CustomTileInfoWidget(
-                title:   "request_type",
-                val: "API ",
-                ),
+              title: "request_type",
+              val: "API ",
+            ),
             CustomTileInfoWidget(
-                title:    "request_state",
-                val:  "not_excute".tr,
+              title: "request_state",
+              val: "not_excute".tr,
               color: AppColors.yellow1e,
-                ),
+            ),
             CustomTileInfoWidget(
                 title: "bill_link",
                 val: "display".tr,
-                isClick:true,
+                isClick: true,
                 color: AppColors.primary),
             CustomTileInfoWidget(title: "pill_value", val: "200.00دك"),
             CustomTileInfoWidget(title: "created_by", val: "Ali Mohammed"),
@@ -113,15 +127,15 @@ class DetailsRequestPage extends StatelessWidget {
             CustomTileInfoWidget(title: "client_name", val: "Ali Mohammed"),
             CustomTileInfoWidget(title: "client_mobile", val: "0000000000"),
             CustomTileInfoWidget(title: "email", val: "sara@gmail.com"),
-            CustomTileInfoWidget(title:  "address_type", val: "غير متاح"),
-            buildMainText(  "client_info_details"),
+            CustomTileInfoWidget(title: "address_type", val: "غير متاح"),
+            buildMainText("client_info_details"),
             Divider(
               color: AppColors.grey87,
               height: 1,
             ),
-            CustomTileInfoWidget(title:  "charge_money", val: " 00.00دك"),
-            CustomTileInfoWidget(title:   "fees_client", val: "00.00دك"),
-            CustomTileInfoWidget(title:   "seller_fees", val: "00.00دك"),
+            CustomTileInfoWidget(title: "charge_money", val: " 00.00دك"),
+            CustomTileInfoWidget(title: "fees_client", val: "00.00دك"),
+            CustomTileInfoWidget(title: "seller_fees", val: "00.00دك"),
             SizedBox(
               height: 50.h,
             ),
@@ -131,16 +145,14 @@ class DetailsRequestPage extends StatelessWidget {
     );
   }
 
-
-
   Container buildMainText(String text) {
     return Container(
       height: 40.h,
       child: ListTile(
           title: Text(
-            text.tr,
-            style: AppTextStyles.b14.copyWith(color: AppColors.primary),
-          )),
+        text.tr,
+        style: AppTextStyles.b14.copyWith(color: AppColors.primary),
+      )),
     );
   }
 }

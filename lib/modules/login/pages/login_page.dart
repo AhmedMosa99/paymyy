@@ -9,20 +9,19 @@ import 'package:paymyy/routes/app_routes.dart';
 
 import '../../../widgets/button_widget.dart';
 import '../../../widgets/shared_screen_widget.dart';
+import '../../../widgets/text_field_widget.dart';
 import '../login_controller.dart';
 import '../widgets/drop_down_widget.dart';
 import '../widgets/footer_widget.dart';
-import '../../../widgets/text_field_widget.dart';
 
 class LoginPage extends StatefulWidget {
-
-
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final controller=   Get.put(LoginController());
+  final controller = Get.put(LoginController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
           builder: (logic) {
             return Container(
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
                         AppImages.background,
@@ -43,11 +42,13 @@ class _LoginPageState extends State<LoginPage> {
                 key: controller.loginKey,
                 child: Column(
                   children: [
-                    SizedBox(height: 20.h,),
+                    SizedBox(
+                      height: 20.h,
+                    ),
                     DropDownWidget(),
                     Container(
-                        margin: EdgeInsetsDirectional.only(
-                            bottom: 22.h, top: 20.h),
+                        margin:
+                            EdgeInsetsDirectional.only(bottom: 22.h, top: 20.h),
                         width: 248.w,
                         height: 147.h,
                         child: Image.asset(
@@ -55,8 +56,9 @@ class _LoginPageState extends State<LoginPage> {
                           fit: BoxFit.fill,
                         )),
                     buildLogin(),
-                    Spacer(),
-                    footer_widget(title: "dont_have_account".tr,
+                    const Spacer(),
+                    footer_widget(
+                        title: "dont_have_account".tr,
                         subtitle: "create_account".tr,
                         function: () {
                           Get.toNamed(AppRoutes.signup);
@@ -72,56 +74,57 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget buildLogin() {
-    return SharedScreenWidget(height: ScreenUtil.defaultSize.height*0.64, body: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Center(
-          child: Container(
-            margin:
-            EdgeInsetsDirectional.only(top: 25.h, bottom: 24.h),
-            child: Text(
-              "login".tr,
-              style: AppTextStyles.mb20,
+    return SharedScreenWidget(
+      height: ScreenUtil.defaultSize.height * 0.64,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: Container(
+              margin: EdgeInsetsDirectional.only(top: 25.h, bottom: 24.h),
+              child: Text(
+                "login".tr,
+                style: AppTextStyles.mb20,
+              ),
             ),
           ),
-        ),
-        buildTitle("email".tr),
-        TextFieldWidget(
-          horozontal: 26,
-          validator: (value)=>InputValidations.validateEmail(value),
-          controller: controller.emailController,
-          hintText: 'example@gmail.com',
-          prefix: AppIcons.email,
-        ),
-        buildTitle("password".tr),
-        TextFieldWidget(
-          horozontal: 26,
-          validator: (value)=>InputValidations.validateName(value),
-            controller: controller.passwordController,
-            hintText: '•••••••',
-            isPassord: true,
-            obscure: true,
-            prefix: AppImages.actionPassord,
-            suffix: AppIcons.passwordSeen),
-        GestureDetector(
-          onTap: () {
-            Get.toNamed(AppRoutes.passordReturned);
-          },
-          child: Container(
-              margin: EdgeInsetsDirectional.only(
-                  start: 190.w, bottom: 30.h),
-              child: Text("forgot_password".tr)),
-        ),
-        ButtonWidget(
-          horozontal: 26,
-            title: "login".tr,
-            function: () {
-              if(controller.loginKey.currentState!.validate()){
-                Get.offAllNamed(AppRoutes.mainPage);
-              }
-            }),
-      ],
-    ),);
+          buildTitle("email".tr),
+          TextFieldWidget(
+            horozontal: 26,
+            validator: (value) => InputValidations.validateEmail(value),
+            controller: controller.emailController,
+            hintText: 'example@gmail.com',
+            prefix: AppIcons.email,
+          ),
+          buildTitle("password".tr),
+          TextFieldWidget(
+              horozontal: 26,
+              validator: (value) => InputValidations.validateName(value),
+              controller: controller.passwordController,
+              hintText: '•••••••',
+              isPassord: true,
+              obscure: true,
+              prefix: AppImages.actionPassord,
+              suffix: AppIcons.passwordSeen),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(AppRoutes.passordReturned);
+            },
+            child: Container(
+                margin: EdgeInsetsDirectional.only(start: 190.w, bottom: 30.h),
+                child: Text("forgot_password".tr)),
+          ),
+          ButtonWidget(
+              horozontal: 26,
+              title: "login".tr,
+              function: () {
+                if (controller.loginKey.currentState!.validate()) {
+                  Get.offAllNamed(AppRoutes.mainPage);
+                }
+              }),
+        ],
+      ),
+    );
   }
 
   Container buildTitle(String title) {

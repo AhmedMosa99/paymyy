@@ -43,10 +43,11 @@ class _HomeTabState extends State<HomeTab> {
     "avaliable_balance"
   ];
   bool tab1 = true, tab2 = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      onEndDrawerChanged: (x)=>controller.setDrawerOPen(x),
+      onEndDrawerChanged: (x) => controller.setDrawerOPen(x),
       appBar: AppBar(
         toolbarHeight: 100.h,
         backgroundColor: Colors.transparent,
@@ -65,14 +66,14 @@ class _HomeTabState extends State<HomeTab> {
         elevation: 0,
         leading: Container(
             margin: EdgeInsetsDirectional.only(start: 16.w),
-            child: CircleAvatar(
+            child: const CircleAvatar(
               backgroundImage: AssetImage(AppImages.profile),
               radius: 35,
             )),
       ),
       endDrawer: buildDrawer(),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             buildCarouselSlider(),
@@ -82,7 +83,7 @@ class _HomeTabState extends State<HomeTab> {
               height: 20.h,
             ),
             ListView.separated(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 separatorBuilder: (c, i) => SizedBox(
                       height: 10.h,
                     ),
@@ -130,8 +131,6 @@ class _HomeTabState extends State<HomeTab> {
       ),
     );
   }
-
-
 
   Container buildElectronics() {
     return Container(
@@ -258,7 +257,7 @@ class _HomeTabState extends State<HomeTab> {
                     },
                     child: Container(
                         margin: EdgeInsetsDirectional.only(start: 20.w),
-                        child: Icon(
+                        child: const Icon(
                           Icons.close,
                           color: Colors.black,
                         )),
@@ -268,19 +267,19 @@ class _HomeTabState extends State<HomeTab> {
                   children: drawers.entries
                       .map((e) => GestureDetector(
                             onTap: () {
-                              if(e.key== "requests"){
+                              if (e.key == "requests") {
                                 Get.toNamed(AppRoutes.requests);
                                 Scaffold.of(context).closeEndDrawer();
-                              } else if(e.key== "payment_links"){
+                              } else if (e.key == "payment_links") {
                                 Get.toNamed(AppRoutes.paymentLinks);
                                 Scaffold.of(context).closeEndDrawer();
-                              }
-                              else if(e.key==  "returned_amounts"){
+                              } else if (e.key == "returned_amounts") {
                                 Get.toNamed(AppRoutes.returnedAmounts);
                                 Scaffold.of(context).closeEndDrawer();
                               } else {
-                              controller.setCurrentTab(getIndex(e.key));
-                              Scaffold.of(context).closeEndDrawer();}
+                                controller.setCurrentTab(getIndex(e.key));
+                                Scaffold.of(context).closeEndDrawer();
+                              }
                             },
                             child: Container(
                               margin: EdgeInsetsDirectional.only(bottom: 40.h),

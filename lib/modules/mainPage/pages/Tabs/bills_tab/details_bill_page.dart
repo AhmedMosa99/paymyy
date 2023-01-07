@@ -17,7 +17,7 @@ class DetailsBillPage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 90.h,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
@@ -34,40 +34,54 @@ class DetailsBillPage extends StatelessWidget {
         centerTitle: true,
         actions: [
           PopupMenuButton<int>(
-            padding: EdgeInsetsDirectional.only(end: 10),
-            icon: Icon(Icons.more_vert,color: Colors.black,),
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                value: 1,
-                child: Row(
-                  children: [
-                    GestureDetector(
-                     onTap: (){
-                       Get.back();
-                       Get.toNamed(AppRoutes.redunduncePill);
-                     } ,
-                        child: Text("bill_recurrence".tr,style: AppTextStyles.b12,)),
-                    Spacer(),
-                    GestureDetector(
-                      onTap: (){
-                        Get.back();
-                      },
-                        child: Icon(Icons.close,color: Colors.black,)),
+              padding: const EdgeInsetsDirectional.only(end: 10),
+              icon: const Icon(
+                Icons.more_vert,
+                color: Colors.black,
+              ),
+              itemBuilder: (context) => [
+                    PopupMenuItem(
+                      value: 1,
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                              onTap: () {
+                                Get.back();
+                                Get.toNamed(AppRoutes.redunduncePill);
+                              },
+                              child: Text(
+                                "bill_recurrence".tr,
+                                style: AppTextStyles.b12,
+                              )),
+                          const Spacer(),
+                          GestureDetector(
+                              onTap: () {
+                                Get.back();
+                              },
+                              child: const Icon(
+                                Icons.close,
+                                color: Colors.black,
+                              )),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 2,
+                      child: Text(
+                        "resend".tr,
+                        style: AppTextStyles.b12,
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 3,
+                      child: Text(
+                        "cancel".tr,
+                        style: AppTextStyles.b12,
+                      ),
+                    ),
                   ],
-                ),
-              ),
-              PopupMenuItem(
-                value: 2,
-                child: Text(  "resend".tr,style: AppTextStyles.b12,),
-              ),
-              PopupMenuItem(
-                value: 3,
-                child: Text(  "cancel".tr,style: AppTextStyles.b12,),
-              ),
-            ],
-            offset: Offset(0, 10),
-            color: Colors.white
-          ),
+              offset: const Offset(0, 10),
+              color: Colors.white),
         ],
       ),
       body: SingleChildScrollView(
@@ -90,10 +104,11 @@ class DetailsBillPage extends StatelessWidget {
             CustomTileInfoWidget(
                 title: "bill_link",
                 val: "display".tr,
-                isClick:true,
+                isClick: true,
                 color: AppColors.primary),
             CustomTileInfoWidget(title: "pill_value", val: "200.00دك"),
-            CustomTileInfoWidget(title: "value_display_currency", val: "200.00دك"),
+            CustomTileInfoWidget(
+                title: "value_display_currency", val: "200.00دك"),
             CustomTileInfoWidget(title: "created_by", val: "Ali Mohammed"),
             CustomTileInfoWidget(title: "date_created", val: "1\1\2022"),
             CustomTileInfoWidget(title: "expired_date", val: "1\1\2022"),
@@ -123,10 +138,12 @@ class DetailsBillPage extends StatelessWidget {
             CustomTileInfoWidget(title: "process_state", val: "Failed"),
             CustomTileInfoWidget(title: "payment_gateway", val: "كي نت"),
             CustomTileInfoWidget(title: "pay_no", val: "1876600012022"),
-            CustomTileInfoWidget(title: "authorization_number", val: "1876600012022"),
+            CustomTileInfoWidget(
+                title: "authorization_number", val: "1876600012022"),
             CustomTileInfoWidget(title: "follow_no", val: "1876600_01\2\ 2022"),
             CustomTileInfoWidget(title: "process_no", val: "1876600012022"),
-            CustomTileInfoWidget(title: "reference_no", val: "18766009985012022"),
+            CustomTileInfoWidget(
+                title: "reference_no", val: "18766009985012022"),
             CustomTileInfoWidget(title: "mistake", val: "Transaction Failed"),
             SizedBox(
               height: 50.h,
@@ -136,8 +153,6 @@ class DetailsBillPage extends StatelessWidget {
       ),
     );
   }
-
-
 
   Container buildMainText(String text) {
     return Container(

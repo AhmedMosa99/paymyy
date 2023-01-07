@@ -1,4 +1,4 @@
-class AppImages{
+class AppImages {
   static const String icon = "assets/images/icon.png";
   static const String blueIcon = "assets/images/blue_icon.png";
   static const String test = "assets/images/test.png";
@@ -27,5 +27,4 @@ class AppImages{
   static const String passwordReturned = "assets/images/returnPassword.png";
   static const String success = "assets/images/success.png";
   static const String actionPassord = "assets/images/action_passord.png";
-
 }

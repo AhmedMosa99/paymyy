@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/theme/app_colors.dart';
+
 class SharedScreenWidget extends StatelessWidget {
-double height;
-Widget body;
-   SharedScreenWidget({required this.body,required this.height});
+  double height;
+  Widget body;
+
+  SharedScreenWidget({required this.body, required this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ Widget body;
         height: height.h,
         decoration: BoxDecoration(
           boxShadow: [
-            BoxShadow(color: AppColors.black33, offset: Offset(0, 0)),
+            BoxShadow(color: AppColors.black33, offset: const Offset(0, 0)),
           ],
           color: Colors.white,
         ),

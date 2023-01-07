@@ -6,9 +6,11 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 
 class footer_widget extends StatelessWidget {
-  String title,subtitle;
+  String title, subtitle;
   Function() function;
-  footer_widget({required this.subtitle,required this.title,required this.function});
+
+  footer_widget(
+      {required this.subtitle, required this.title, required this.function});
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +20,12 @@ class footer_widget extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-                text: title, style: AppTextStyles.b12.copyWith(color: Colors.black)),
+                text: title,
+                style: AppTextStyles.b12.copyWith(color: Colors.black)),
             TextSpan(
-                text: " "+ subtitle,
+                text: " " + subtitle,
                 style: AppTextStyles.b12.copyWith(color: AppColors.primary),
-                recognizer: TapGestureRecognizer()..onTap= function
-            ),
+                recognizer: TapGestureRecognizer()..onTap = function),
           ],
         ),
       ),

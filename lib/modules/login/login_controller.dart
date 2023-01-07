@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class LoginController extends GetxController{
+class LoginController extends GetxController {
   final loginKey = GlobalKey<FormState>();
   final passwordKey = GlobalKey<FormState>();
   final passwordConfirm = GlobalKey<FormState>();

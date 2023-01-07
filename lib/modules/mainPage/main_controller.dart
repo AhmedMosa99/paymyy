@@ -1,18 +1,21 @@
 import 'package:get/get.dart';
 
-class MainController extends GetxController{
+class MainController extends GetxController {
   int currentTab = 0;
-  setCurrentTab(int index){
-    currentTab=index;
+
+  setCurrentTab(int index) {
+    currentTab = index;
     update();
   }
-  bool isDrawer=false;
-setDrawerOPen(bool x){
-  if(x){
-    isDrawer=true;
-  }else{
-    isDrawer=false;
+
+  bool isDrawer = false;
+
+  setDrawerOPen(bool x) {
+    if (x) {
+      isDrawer = true;
+    } else {
+      isDrawer = false;
+    }
+    update();
   }
-  update();
-}
 }

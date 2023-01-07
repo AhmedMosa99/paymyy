@@ -56,7 +56,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         children: [
           Container(
             margin: EdgeInsetsDirectional.only(top: 40.h),
-            height: ScreenUtil.defaultSize.height*0.75,
+            height: ScreenUtil.defaultSize.height * 0.75,
             child: PageView.builder(
               controller: _controller,
               itemCount: boardings.length,
@@ -98,7 +98,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               height: 51.h,
               width: 51.w,
               child: ElevatedButton(
-                child: Icon(
+                child: const Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.white,
                 ),

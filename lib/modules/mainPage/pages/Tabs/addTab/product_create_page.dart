@@ -110,8 +110,8 @@ class _ProductcreationPageState extends State<ProductcreationPage> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: AppColors.grey87, width: 0.5),
-                    boxShadow: [
-                      const BoxShadow(
+                    boxShadow:const [
+                       BoxShadow(
                         offset: Offset(0, 2),
                         spreadRadius: 2,
                         color: Color.fromARGB(1, 0, 0, 0),

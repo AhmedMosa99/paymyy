@@ -1,4 +1,4 @@
-class AppRoutes{
+class AppRoutes {
   static String splash = "/splash";
   static String language = "/language";
   static String boarding = "/boarding";

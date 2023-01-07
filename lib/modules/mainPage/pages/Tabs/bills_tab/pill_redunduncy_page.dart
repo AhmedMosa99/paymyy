@@ -51,7 +51,7 @@ class _PillRedunduncyPageState extends State<PillRedunduncyPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
@@ -69,7 +69,7 @@ class _PillRedunduncyPageState extends State<PillRedunduncyPage> {
         elevation: 0,
       ),
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             buildContainerCondition(),
@@ -93,97 +93,97 @@ class _PillRedunduncyPageState extends State<PillRedunduncyPage> {
 
   ListView mainListDetails() {
     return ListView(
-              shrinkWrap: true,
-              children: [
-                SizedBox(
-                  height: 35.h,
-                ),
-                Center(
-                  child: Text('00.00',
-                      style: AppTextStyles.b24.copyWith(color: Colors.white)),
-                ),
-                buildDropdownButton(),
-                TextFieldWidget(
-                  horozontal: 26,
-                  validator: (value) => InputValidations.validateName(value),
-                  suffix: AppIcons.add,
-                  controller: name,
-                  hintText: 'سارة محمد الخالد',
-                  prefix: AppImages.name,
-                ),
-                TextFieldWidget(
-                  horozontal: 26,
-                  validator: (value) => InputValidations.validateName(value),
-                  controller: gmail,
-                  hintText: 'sara@hotmail.com  ',
-                  prefix: AppIcons.email,
-                ),
-                Container(
-                  margin: EdgeInsetsDirectional.only(start: 26.w,bottom: 10.h),
-                  child: Text(
-                    'تاريخ الانتهاء',
-                    style: AppTextStyles.r12.copyWith(color: Colors.white),
-                  ),
-                ),
-                buildDate(),
-                Container(
-                  height: 50.h,
-                  margin: EdgeInsets.symmetric(horizontal: 26.w),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white),
-                  child: ListTile(
-                    horizontalTitleGap: 0,
-                    onTap: () {
-                      selectFile();
-                    },
-                    leading: SvgPicture.asset(AppIcons.file),
-                    title: Text(
-                      fileSelected.isEmpty ? ' أرفق ملف' : fileSelected,
-                      style: AppTextStyles.r10.copyWith(
-                          color: fileSelected.isEmpty
-                              ? AppColors.grey87
-                              : Colors.black),
-                    ),
-                  ),
-                ),
-                ListTile(
-                  onTap: () {
-                    setState(() {
-                      isVisible = !isVisible;
-                    });
-                  },
-                  contentPadding: EdgeInsetsDirectional.only(start: 30.w),
-                  horizontalTitleGap: 0,
-                  leading: SvgPicture.asset(AppIcons.advance),
-                  title: Text(
-                    "advance".tr,
-                    style: isVisible
-                        ? AppTextStyles.ul14.copyWith(color: Colors.white)
-                        : AppTextStyles.r14.copyWith(color: Colors.white),
-                  ),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                buildVisibility(),
-                ButtonWidget(
-                    textcolor: AppColors.secondary,
-                    horozontal: 26,
-                    bgColor: Colors.white,
-                    title: "bill_create".tr,
-                    function: () {
-                      Get.dialog(AddDialogWidget(),);
-                    })
-              ],
-            );
+      shrinkWrap: true,
+      children: [
+        SizedBox(
+          height: 35.h,
+        ),
+        Center(
+          child: Text('00.00',
+              style: AppTextStyles.b24.copyWith(color: Colors.white)),
+        ),
+        buildDropdownButton(),
+        TextFieldWidget(
+          horozontal: 26,
+          validator: (value) => InputValidations.validateName(value),
+          suffix: AppIcons.add,
+          controller: name,
+          hintText: 'سارة محمد الخالد',
+          prefix: AppImages.name,
+        ),
+        TextFieldWidget(
+          horozontal: 26,
+          validator: (value) => InputValidations.validateName(value),
+          controller: gmail,
+          hintText: 'sara@hotmail.com  ',
+          prefix: AppIcons.email,
+        ),
+        Container(
+          margin: EdgeInsetsDirectional.only(start: 26.w, bottom: 10.h),
+          child: Text(
+            'تاريخ الانتهاء',
+            style: AppTextStyles.r12.copyWith(color: Colors.white),
+          ),
+        ),
+        buildDate(),
+        Container(
+          height: 50.h,
+          margin: EdgeInsets.symmetric(horizontal: 26.w),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10), color: Colors.white),
+          child: ListTile(
+            horizontalTitleGap: 0,
+            onTap: () {
+              selectFile();
+            },
+            leading: SvgPicture.asset(AppIcons.file),
+            title: Text(
+              fileSelected.isEmpty ? ' أرفق ملف' : fileSelected,
+              style: AppTextStyles.r10.copyWith(
+                  color:
+                      fileSelected.isEmpty ? AppColors.grey87 : Colors.black),
+            ),
+          ),
+        ),
+        ListTile(
+          onTap: () {
+            setState(() {
+              isVisible = !isVisible;
+            });
+          },
+          contentPadding: EdgeInsetsDirectional.only(start: 30.w),
+          horizontalTitleGap: 0,
+          leading: SvgPicture.asset(AppIcons.advance),
+          title: Text(
+            "advance".tr,
+            style: isVisible
+                ? AppTextStyles.ul14.copyWith(color: Colors.white)
+                : AppTextStyles.r14.copyWith(color: Colors.white),
+          ),
+        ),
+        SizedBox(
+          height: 10.h,
+        ),
+        buildVisibility(),
+        ButtonWidget(
+            textcolor: AppColors.secondary,
+            horozontal: 26,
+            bgColor: Colors.white,
+            title: "bill_create".tr,
+            function: () {
+              Get.dialog(
+                AddDialogWidget(),
+              );
+            })
+      ],
+    );
   }
 
   Visibility buildVisibility() {
     return Visibility(
       visible: isVisible,
       child: ListView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         children: [
           Container(
@@ -227,7 +227,6 @@ class _PillRedunduncyPageState extends State<PillRedunduncyPage> {
                       height: 10.h,
                       margin: EdgeInsetsDirectional.only(end: 8.w, start: 16.w),
                       child: Radio(
-
                         activeColor: AppColors.primary,
                         groupValue: percentage,
                         value: 1,
@@ -262,7 +261,7 @@ class _PillRedunduncyPageState extends State<PillRedunduncyPage> {
               prefix: AppIcons.clientReference,
               hintText: "client_reference".tr),
           TextFieldWidget(
-            blackLabel: true,
+              blackLabel: true,
               maxLines: 4,
               horozontal: 26,
               validator: (value) => InputValidations.validateName(value),
@@ -339,9 +338,11 @@ class _PillRedunduncyPageState extends State<PillRedunduncyPage> {
             ),
             child: Row(
               children: [
-                SizedBox(width: 16.w,),
+                SizedBox(
+                  width: 16.w,
+                ),
                 Text('products'.tr, style: AppTextStyles.r12),
-                Spacer(),
+                const Spacer(),
                 SvgPicture.asset(AppIcons.product),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10.w),
@@ -350,32 +351,38 @@ class _PillRedunduncyPageState extends State<PillRedunduncyPage> {
               ],
             ),
           ),
-          Row(
-         children:[ GestureDetector(
-           onTap: (){
-             setState(() {
-               check=!check;
-             });
-           },
-           child: Container(
-             margin: EdgeInsetsDirectional.only(end: 10.w,start: 30.w,top: 16.h,bottom: 16.h),
-             width: 17.w,
-             height: 17.h,
-             decoration: BoxDecoration(
-               borderRadius: BorderRadius.circular(4),
-               color: Colors.white
-             ),
-             child: Visibility(
-               visible: check,
-               child:Center(child:  Icon(Icons.check,color: AppColors.primary,size: 17,),),
-             ),
-           ),
-         ),
-             Text(
+          Row(children: [
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  check = !check;
+                });
+              },
+              child: Container(
+                margin: EdgeInsetsDirectional.only(
+                    end: 10.w, start: 30.w, top: 16.h, bottom: 16.h),
+                width: 17.w,
+                height: 17.h,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: Colors.white),
+                child: Visibility(
+                  visible: check,
+                  child: Center(
+                    child: Icon(
+                      Icons.check,
+                      color: AppColors.primary,
+                      size: 17,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Text(
               "terms_condtions".tr,
               style: AppTextStyles.r8.copyWith(color: AppColors.black1e),
-            ),]
-          )
+            ),
+          ])
         ],
       ),
     );
@@ -388,7 +395,7 @@ class _PillRedunduncyPageState extends State<PillRedunduncyPage> {
             AppIcons.dropdown,
             color: Colors.white,
           ),
-          underline: SizedBox(),
+          underline: const SizedBox(),
           value: selected,
           onChanged: (x) {
             setState(() {

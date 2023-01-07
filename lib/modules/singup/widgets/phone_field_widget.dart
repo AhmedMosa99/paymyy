@@ -10,7 +10,7 @@ class PhoneFieldWidget extends StatefulWidget {
   TextEditingController controller;
   double horizontal;
 
-  PhoneFieldWidget({required this.controller,this.horizontal=35});
+  PhoneFieldWidget({required this.controller, this.horizontal = 35});
 
   @override
   State<PhoneFieldWidget> createState() => _PhoneFieldWidgetState();
@@ -23,7 +23,8 @@ class _PhoneFieldWidgetState extends State<PhoneFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: widget.horizontal.w, vertical: 11.h),
+      margin:
+          EdgeInsets.symmetric(horizontal: widget.horizontal.w, vertical: 11.h),
       child: TextFormField(
         controller: widget.controller,
         keyboardType: TextInputType.phone,
@@ -39,9 +40,9 @@ class _PhoneFieldWidgetState extends State<PhoneFieldWidget> {
               height: 52.h,
               decoration: BoxDecoration(
                   color: AppColors.graye2,
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(10),
-                      bottomRight: Radius.circular(10))),
+                  borderRadius: const BorderRadiusDirectional.only(
+                      topStart: Radius.circular(10),
+                      bottomStart: Radius.circular(10))),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -65,25 +66,25 @@ class _PhoneFieldWidgetState extends State<PhoneFieldWidget> {
 
   DropdownButton2<String> buildDropDownButton() {
     return DropdownButton2(
-                  dropdownWidth: 80.w,
-                  underline: SizedBox(),
-                  value: value,
-                  onChanged: (val) {
-                    value = val!;
-                    setState(() {});
-                  },
-                  items: phones
-                      .map((e) => DropdownMenuItem(
-                          value: e,
-                          child: Container(
-                              margin: EdgeInsetsDirectional.only(end: 10),
-                              child: Text(
-                                e,
-                                style: AppTextStyles.b10,
-                              ))))
-                      .toList(),
-                  icon: SvgPicture.asset(AppIcons.dropdown),
-                );
+      dropdownWidth: 80.w,
+      underline: const SizedBox(),
+      value: value,
+      onChanged: (val) {
+        value = val!;
+        setState(() {});
+      },
+      items: phones
+          .map((e) => DropdownMenuItem(
+              value: e,
+              child: Container(
+                  margin: const EdgeInsetsDirectional.only(end: 10),
+                  child: Text(
+                    e,
+                    style: AppTextStyles.b10,
+                  ))))
+          .toList(),
+      icon: SvgPicture.asset(AppIcons.dropdown),
+    );
   }
 
   OutlineInputBorder buildOutlineInputBorder() {

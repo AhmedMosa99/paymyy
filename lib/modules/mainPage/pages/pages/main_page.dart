@@ -28,41 +28,45 @@ class MainPage extends StatelessWidget {
       builder: (logic) {
         return Scaffold(
           body: screens[controller.currentTab],
-          floatingActionButton:controller.isDrawer?SizedBox(): FloatingActionButton(
-            child: const Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Get.toNamed(AppRoutes.createPill);
-            },
-          ),
-          floatingActionButtonLocation: FloatingActionButtonLocation
-              .centerDocked,
-          bottomNavigationBar: controller.isDrawer?SizedBox():BottomAppBar(
-            child: Container(
-              margin: EdgeInsetsDirectional.only(bottom: 2.h),
-              decoration: BoxDecoration(
-                color: AppColors.graye2.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              height: 80.h,
-              child: Row(
-                children: [
-                  buildBottomTab("home", 0,30,40),
-                  buildBottomTab("fawateer", 1,30,90),
-                  buildBottomTab("products", 2,10,50),
-                  buildBottomTab("clients", 3,10,10),
-                ],
-              ),
-            ),
-          ),
+          floatingActionButton: controller.isDrawer
+              ? const SizedBox()
+              : FloatingActionButton(
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    Get.toNamed(AppRoutes.createPill);
+                  },
+                ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: controller.isDrawer
+              ? const SizedBox()
+              : BottomAppBar(
+                  child: Container(
+                    margin: EdgeInsetsDirectional.only(bottom: 2.h),
+                    decoration: BoxDecoration(
+                      color: AppColors.graye2.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    height: 80.h,
+                    child: Row(
+                      children: [
+                        buildBottomTab("home", 0, 30, 40),
+                        buildBottomTab("fawateer", 1, 30, 90),
+                        buildBottomTab("products", 2, 10, 50),
+                        buildBottomTab("clients", 3, 10, 10),
+                      ],
+                    ),
+                  ),
+                ),
         );
       },
     );
   }
 
-  Widget buildBottomTab(String name, int index,double start,double end) {
+  Widget buildBottomTab(String name, int index, double start, double end) {
     return GestureDetector(
       onTap: () {
         controller.setCurrentTab(index);
@@ -72,12 +76,10 @@ class MainPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: EdgeInsetsDirectional.only(
-                start: start.w, end: end.w),
-            child: SvgPicture.asset(
-                controller.currentTab == index
-                    ? getSelectedIcon(index)
-                    : getIcon(index)),
+            margin: EdgeInsetsDirectional.only(start: start.w, end: end.w),
+            child: SvgPicture.asset(controller.currentTab == index
+                ? getSelectedIcon(index)
+                : getIcon(index)),
           ),
           SizedBox(
             height: 4.h,
@@ -85,8 +87,7 @@ class MainPage extends StatelessWidget {
           Visibility(
             visible: controller.currentTab == index,
             child: Container(
-                margin:
-                EdgeInsetsDirectional.only(start: start),
+                margin: EdgeInsetsDirectional.only(start: start),
                 child: Text(
                   name.tr,
                   style: AppTextStyles.r10.copyWith(color: AppColors.primary),

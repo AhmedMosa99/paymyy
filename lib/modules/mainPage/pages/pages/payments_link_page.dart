@@ -4,11 +4,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:paymyy/core/theme/app_colors.dart';
-import 'package:paymyy/modules/mainPage/widgets/sort_sheet_widget.dart';
 import 'package:paymyy/routes/app_routes.dart';
 
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/values/assets/app_icons.dart';
+
 class PaymentLinkPage extends StatelessWidget {
   const PaymentLinkPage({Key? key}) : super(key: key);
 
@@ -18,7 +18,7 @@ class PaymentLinkPage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_outlined,
             color: Colors.black,
           ),
@@ -35,17 +35,22 @@ class PaymentLinkPage extends StatelessWidget {
         elevation: 0,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           Get.toNamed(AppRoutes.pillLinkCreate);
         },
         backgroundColor: AppColors.primary,
-        child: Icon(Icons.add,color: Colors.white,),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
       body: ListView.separated(
-        separatorBuilder: (c,i)=>SizedBox(height: 16.h,),
+        separatorBuilder: (c, i) => SizedBox(
+          height: 16.h,
+        ),
         itemCount: 3,
-        itemBuilder: (c,i)=>GestureDetector(
-          onTap: (){
+        itemBuilder: (c, i) => GestureDetector(
+          onTap: () {
             Get.toNamed(AppRoutes.pillLinkDetails);
           },
           child: Card(
@@ -58,15 +63,23 @@ class PaymentLinkPage extends StatelessWidget {
               height: 72.h,
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Row(
-children: [
-  Text('ssss',style: AppTextStyles.r14.copyWith(color: AppColors.black22),),
-  Spacer(),
-  SvgPicture.asset(AppIcons.billLink),
-  Container(
-    margin: EdgeInsets.symmetric(horizontal: 10.w),
-      child: Text('4',style: AppTextStyles.r10.copyWith(color: AppColors.grey87),)),
-  SvgPicture.asset(AppIcons.passwordSeen),
-],            ),
+                children: [
+                  Text(
+                    'ssss',
+                    style: AppTextStyles.r14.copyWith(color: AppColors.black22),
+                  ),
+                  const Spacer(),
+                  SvgPicture.asset(AppIcons.billLink),
+                  Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10.w),
+                      child: Text(
+                        '4',
+                        style:
+                            AppTextStyles.r10.copyWith(color: AppColors.grey87),
+                      )),
+                  SvgPicture.asset(AppIcons.passwordSeen),
+                ],
+              ),
             ),
           ),
         ),

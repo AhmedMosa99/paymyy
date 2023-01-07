@@ -20,6 +20,7 @@ class BillsPage extends StatefulWidget {
 
 class _BillsPageState extends State<BillsPage> {
   bool tab1 = true, tab2 = false, tab3 = false, tab4 = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +41,8 @@ class _BillsPageState extends State<BillsPage> {
           GestureDetector(
               onTap: () {
                 Get.bottomSheet(
-                  SortSheetWidget(),  ignoreSafeArea: true,
+                  SortSheetWidget(),
+                  ignoreSafeArea: true,
                   barrierColor: Colors.black26,
                   isScrollControlled: true,
                   enableDrag: false,
@@ -51,8 +53,10 @@ class _BillsPageState extends State<BillsPage> {
                       topEnd: Radius.circular(25),
                       topStart: Radius.circular(25),
                     ),
-                  ),);
-              }, child: SvgPicture.asset(AppIcons.filter)),
+                  ),
+                );
+              },
+              child: SvgPicture.asset(AppIcons.filter)),
           SizedBox(
             width: 16.w,
           ),
@@ -73,16 +77,22 @@ class _BillsPageState extends State<BillsPage> {
 
   ListView buildListView() {
     return ListView.separated(
-            physics: NeverScrollableScrollPhysics(),
-            separatorBuilder: (c, i) => SizedBox(
-                  height: 10.h,
-                ),
-            shrinkWrap: true,
-            itemCount: bills.length,
-            itemBuilder: (context, index) {
-              final bill = tab1 ? notPaied[index] :tab2? paied[index]:tab3?putted[index]:canceled[index];
-              return BillWidget(bill: bill);
-            });
+        physics: NeverScrollableScrollPhysics(),
+        separatorBuilder: (c, i) => SizedBox(
+              height: 10.h,
+            ),
+        shrinkWrap: true,
+        itemCount: bills.length,
+        itemBuilder: (context, index) {
+          final bill = tab1
+              ? notPaied[index]
+              : tab2
+                  ? paied[index]
+                  : tab3
+                      ? putted[index]
+                      : canceled[index];
+          return BillWidget(bill: bill);
+        });
   }
 
   Container buildContainerCondition() {

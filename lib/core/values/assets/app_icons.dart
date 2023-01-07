@@ -1,4 +1,4 @@
-class AppIcons{
+class AppIcons {
   static const String ar = "assets/svgs/ar.svg";
   static const String en = "assets/svgs/en.svg";
   static const String lock = "assets/svgs/lock.svg";

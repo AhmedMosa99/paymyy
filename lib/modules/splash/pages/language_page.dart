@@ -17,13 +17,14 @@ class LanguagePage extends StatefulWidget {
 }
 
 class _LanguagePageState extends State<LanguagePage> {
-  bool arabic =true,english=false;
+  bool arabic = true, english = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
                   AppImages.background,
@@ -55,7 +56,7 @@ class _LanguagePageState extends State<LanguagePage> {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                              color: AppColors.black33, offset: Offset(0, 0)),
+                              color: AppColors.black33, offset: const Offset(0, 0)),
                         ],
                         color: Colors.white,
                       ),
@@ -73,28 +74,28 @@ class _LanguagePageState extends State<LanguagePage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               buildLanguage(
-                                function: (){
-                                  LocalStrorageProvider.setLanguage('en');
-                                  arabic=false;
-                                  english=true;
-                                  setState(() {
-
-                                  });
-                                },
+                                  function: () {
+                                    LocalStrorageProvider.setLanguage('en');
+                                    arabic = false;
+                                    english = true;
+                                    setState(() {});
+                                  },
                                   selected: english,
-                                  title: 'English', icon: AppIcons.en),
-                              SizedBox(width: 60.w,),
+                                  title: 'English',
+                                  icon: AppIcons.en),
+                              SizedBox(
+                                width: 60.w,
+                              ),
                               buildLanguage(
-                                  function: (){
+                                  function: () {
                                     LocalStrorageProvider.setLanguage('ar');
-                                    arabic=true;
-                                    english=false;
-                                    setState(() {
-
-                                    });
+                                    arabic = true;
+                                    english = false;
+                                    setState(() {});
                                   },
                                   selected: arabic,
-                                  title: 'اللغة العربية', icon: AppIcons.ar),
+                                  title: 'اللغة العربية',
+                                  icon: AppIcons.ar),
                             ],
                           )
                         ],
@@ -107,11 +108,14 @@ class _LanguagePageState extends State<LanguagePage> {
                     child: Container(
                       width: 280.w,
                       child: ButtonWidget(
-                        horozontal: 10,
-                          title: 'next'.tr,function: (){
-                        Get.updateLocale(Locale(LocalStrorageProvider.locale));
-                        LocalStrorageProvider.setEnter(true);
-                        Get.toNamed(AppRoutes.boarding);}),
+                          horozontal: 10,
+                          title: 'next'.tr,
+                          function: () {
+                            Get.updateLocale(
+                                Locale(LocalStrorageProvider.locale));
+                            LocalStrorageProvider.setEnter(true);
+                            Get.toNamed(AppRoutes.boarding);
+                          }),
                     ),
                   )
                 ],
@@ -123,7 +127,11 @@ class _LanguagePageState extends State<LanguagePage> {
     );
   }
 
-  Widget buildLanguage({required String title, required String icon,required Function() function,required bool selected}) {
+  Widget buildLanguage(
+      {required String title,
+      required String icon,
+      required Function() function,
+      required bool selected}) {
     return Column(
       children: [
         GestureDetector(
@@ -134,7 +142,9 @@ class _LanguagePageState extends State<LanguagePage> {
             decoration: BoxDecoration(
                 color: AppColors.greyd9,
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(width: 1, color:selected?AppColors.primary: AppColors.greyd9)),
+                border: Border.all(
+                    width: 1,
+                    color: selected ? AppColors.primary : AppColors.greyd9)),
             child: SvgPicture.asset(icon),
           ),
         ),

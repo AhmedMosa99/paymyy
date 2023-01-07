@@ -17,24 +17,20 @@ class LocalStrorageProvider {
     return GetStorage().read<int?>(_userId);
   }
 
-
-
-
-
   static String get locale {
     return GetStorage().read<String?>(_locale) ?? "ar";
   }
-
-
 
   static bool get isDarkMode {
     return GetStorage().read<bool>(_isDarkMode) ?? false;
     // (SchedulerBinding.instance.platformDispatcher.platformBrightness ==
     //     Brightness.dark);
   }
-static bool get isEnter{
-    return GetStorage().read<bool>(_enter)??false;
-}
+
+  static bool get isEnter {
+    return GetStorage().read<bool>(_enter) ?? false;
+  }
+
   static setLanguage(String locale) async {
     await GetStorage().write(_locale, locale);
   }
@@ -54,7 +50,4 @@ static bool get isEnter{
   static setUserId(int userId) async {
     await GetStorage().write(_userId, userId);
   }
-
-
-
 }
