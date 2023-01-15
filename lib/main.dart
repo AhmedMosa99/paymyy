@@ -8,6 +8,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:paymyy/routes/app_pages.dart';
 import 'package:paymyy/routes/app_routes.dart';
 import 'package:paymyy/routes/bindings/app_binding.dart';
+import 'package:paymyy/shared/binding.dart';
 
 import 'core/theme/themes.dart';
 import 'core/values/languages/translations.dart';
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
           darkTheme: AppThemes.dark,
           themeMode: AppThemes.themeMode,
           translations: AppTranslations(),
-          initialBinding: AppBinding(),
+          initialBinding: MainBinding(),
           initialRoute: AppRoutes.splash,
         );
       },

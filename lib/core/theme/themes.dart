@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,6 +20,24 @@ class AppThemes {
       fontFamily: getFontFamily());
 
   static ThemeData light = ThemeData(
+    textTheme: TextTheme(
+      bodyText2: TextStyle(fontSize: 16.sp,fontFamily:  GoogleFonts.tajawal().fontFamily ),
+      bodyText1: TextStyle(fontSize: 16.sp,fontFamily:  GoogleFonts.tajawal().fontFamily ),
+    ),
+    appBarTheme:
+        AppBarTheme(
+            titleTextStyle: TextStyle(
+              fontSize: 20.sp,
+              fontFamily: getFontFamily(),
+              color: Colors.black,
+            ),
+            centerTitle: true,
+            iconTheme: IconThemeData(color: Colors.black, size: 20.w),
+            backgroundColor: Colors.white,
+            systemOverlayStyle: const SystemUiOverlayStyle(
+                statusBarIconBrightness: Brightness.dark,
+                statusBarBrightness: Brightness.dark,
+                statusBarColor: Colors.white)),
       scaffoldBackgroundColor: Colors.white,
       canvasColor: Colors.grey,
       brightness: Brightness.light,

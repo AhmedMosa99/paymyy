@@ -28,7 +28,7 @@ class RegisterController extends GetxController {
   selectProfileImage() async {
     XFile file =
         await ImagePicker().pickImage(source: ImageSource.gallery) ?? XFile('');
-    this.updatedFile = File(file.path);
+    updatedFile = File(file.path);
     update();
   }
 }

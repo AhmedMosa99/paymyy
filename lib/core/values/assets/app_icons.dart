@@ -44,4 +44,19 @@ class AppIcons {
   static const String returned = "assets/svgs/returned.svg";
   static const String clientsAdd = "assets/svgs/clients_add.svg";
   static const String clientReference = "assets/svgs/client_reference.svg";
+  static const String profilePersonally = "assets/svgs/personal.svg";
+  static const String settings = "assets/svgs/settings.svg";
+  static const String support = "assets/svgs/support.svg";
+  static const String notifications = "assets/svgs/nottifaction.svg";
+  static const String signOut = "assets/svgs/logout.svg";
+  static const String changePassword = "assets/svgs/change password.svg";
+  static const String discount = "assets/svgs/discount.svg";
+  static const String fees = "assets/svgs/fees.svg";
+  static const String language = "assets/svgs/language.svg";
+  static const String notificationProfile = "assets/svgs/notifaication.svg";
+  static const String privacy = "assets/svgs/privacy.svg";
+  static const String social = "assets/svgs/social.svg";
+  static const String supportProfile = "assets/svgs/support.svg";
+  static const String term = "assets/svgs/term.svg";
+  static const String remove = "assets/svgs/remove.svg";
 }

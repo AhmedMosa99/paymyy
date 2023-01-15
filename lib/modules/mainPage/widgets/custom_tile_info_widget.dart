@@ -18,7 +18,7 @@ class CustomTileInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 30.h,
       child: ListTile(
         title: Text(

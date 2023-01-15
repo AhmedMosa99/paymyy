@@ -19,4 +19,13 @@ class AppRoutes {
   static String detailsPillRequest = "/detailsPillRequest";
   static String pillLinkCreate = "/pillLinkCreate";
   static String pillLinkDetails = "/pillLinkDetails";
+  static String settingsScreen = "/settingsScreen";
+  static String socialMediaScreen = "/socialMediaScreen";
+  static String feesScreen = "/feesScreen";
+  static String discountScreen = "/discountScreen";
+  static String notificationSettingsScreen = "/notificationSettingsScreen";
+  static String termScreen = "/termScreen";
+  static String supportScreen = "/supportScreen";
+  static String notificationsScreen = "/notificationsScreen";
+
 }

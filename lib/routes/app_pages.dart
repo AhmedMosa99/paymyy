@@ -5,6 +5,13 @@ import 'package:paymyy/modules/login/pages/passord_returned_page.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/addTab/product_create_page.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/bills_tab/details_bill_page.dart';
 import 'package:paymyy/modules/on_boarding/pages/on_boarding_page.dart';
+import 'package:paymyy/modules/profile/views/screens/discount_screen.dart';
+import 'package:paymyy/modules/profile/views/screens/fees_screen.dart';
+import 'package:paymyy/modules/profile/views/screens/notifactions_screen.dart';
+import 'package:paymyy/modules/profile/views/screens/settings_inotifaction_screen.dart';
+import 'package:paymyy/modules/profile/views/screens/settings_screen.dart';
+import 'package:paymyy/modules/profile/views/screens/soical_screen.dart';
+import 'package:paymyy/modules/profile/views/screens/support_screen.dart';
 import 'package:paymyy/modules/splash/pages/language_page.dart';
 
 import '../modules/login/pages/login_page.dart';
@@ -18,6 +25,7 @@ import '../modules/mainPage/pages/pages/main_page.dart';
 import '../modules/mainPage/pages/pages/payments_link_page.dart';
 import '../modules/mainPage/pages/pages/request_page.dart';
 import '../modules/mainPage/pages/pages/returned_amounts_page.dart';
+import '../modules/profile/views/screens/privacy_policy_screen.dart';
 import '../modules/singup/pages/signup_page.dart';
 import '../modules/splash/pages/splash_page.dart';
 import 'app_routes.dart';
@@ -45,5 +53,13 @@ class AppPages {
         name: AppRoutes.detailsPillRequest, page: () => DetailsRequestPage()),
     GetPage(name: AppRoutes.pillLinkCreate, page: () => BillLinkCreatePage()),
     GetPage(name: AppRoutes.pillLinkDetails, page: () => BillLinkDetailsPage()),
+    GetPage(name: AppRoutes.settingsScreen, page: () => SettingsScreen()),
+    GetPage(name: AppRoutes.feesScreen, page: () => FeesScreen()),
+    GetPage(name: AppRoutes.socialMediaScreen, page: () => SocialMediaScreen()),
+    GetPage(name: AppRoutes.discountScreen, page: () => DiscountScreen()),
+    GetPage(name: AppRoutes.notificationSettingsScreen, page: () => NotificationSettingsScreen()),
+    GetPage(name: AppRoutes.termScreen, page: () => TermScreen()),
+    GetPage(name: AppRoutes.supportScreen, page: () => SupportScreen()),
+    GetPage(name: AppRoutes.notificationsScreen, page: () => NotificationScreen()),
   ];
 }

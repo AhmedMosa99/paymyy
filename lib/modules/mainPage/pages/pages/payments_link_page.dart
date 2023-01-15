@@ -11,7 +11,6 @@ import '../../../../core/values/assets/app_icons.dart';
 
 class PaymentLinkPage extends StatelessWidget {
   const PaymentLinkPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

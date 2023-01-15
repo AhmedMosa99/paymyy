@@ -35,6 +35,14 @@ class _HomeTabState extends State<HomeTab> {
     "payment_links": AppIcons.paymentLinks,
     "returned_amounts": AppIcons.returnedAmounts
   };
+  Map<String, String> starDrawers = {
+    "profilePersonally": AppIcons.profilePersonally,
+    "settings": AppIcons.settings,
+    "support": AppIcons.support,
+    "notifications": AppIcons.notifications,
+    "signOut": AppIcons.signOut,
+  };
+
 
   List<String> sliders = [
     "waiting_transaction",
@@ -48,6 +56,7 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       onEndDrawerChanged: (x) => controller.setDrawerOPen(x),
+      onDrawerChanged: (x)=>controller.setDrawerOPen(x),
       appBar: AppBar(
         toolbarHeight: 100.h,
         backgroundColor: Colors.transparent,
@@ -64,14 +73,24 @@ class _HomeTabState extends State<HomeTab> {
           ),
         ],
         elevation: 0,
-        leading: Container(
-            margin: EdgeInsetsDirectional.only(start: 16.w),
-            child: const CircleAvatar(
-              backgroundImage: AssetImage(AppImages.profile),
-              radius: 35,
-            )),
+        leading: Builder(
+          builder: (context) {
+            return GestureDetector(
+              onTap: (){
+                Scaffold.of(context).openDrawer();
+              },
+              child: Container(
+                  margin: EdgeInsetsDirectional.only(start: 16.w),
+                  child: const CircleAvatar(
+                    backgroundImage: AssetImage(AppImages.profile),
+                    radius: 35,
+                  )),
+            );
+          }
+        ),
       ),
       endDrawer: buildDrawer(),
+      drawer:buildStartDrawer(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -305,6 +324,105 @@ class _HomeTabState extends State<HomeTab> {
       );
     });
   }
+  Builder buildStartDrawer() {
+    return Builder(builder: (context) {
+      return Container(
+        width: ScreenUtil.defaultSize.width * 0.55,
+        child: Drawer(
+          backgroundColor: Colors.white,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 75.h,
+              ),
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 10.w),
+                child: Align(
+                    alignment: Alignment.topLeft,
+                    child: GestureDetector(
+                      onTap: () {
+                        Scaffold.of(context).closeEndDrawer();
+                      },
+                      child: Container(
+                          margin: EdgeInsetsDirectional.only(start: 20.w),
+                          child: const Icon(
+                            Icons.close,
+                            color: Colors.black,
+                          )),
+                    )),
+              ),
+              Container(
+                height: 85.h,
+                width: 100.w,
+                decoration: BoxDecoration(shape: BoxShape.circle),
+                child: Stack(
+                  children: [
+                    Image.asset('assets/images/profile.png',fit: BoxFit.fill,),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                          width: 22.w,height: 22.h,decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                          color: Colors.white,
+                        border: Border.all(color: Color(0xff878787),width: .5.w)
+
+                      ),
+                      child: Center(child: Icon(Icons.edit,color: Color(0xff878787),size: 18.w,))
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              ListView(
+                  shrinkWrap: true,
+                  children: starDrawers.entries
+                      .map((e) => GestureDetector(
+                    onTap: () {
+                      if (e.key == "settings") {
+                        Get.toNamed(AppRoutes.settingsScreen);
+                        Scaffold.of(context).closeDrawer();
+                      } else if (e.key == "support") {
+                        Get.toNamed(AppRoutes.supportScreen);
+                        Scaffold.of(context).closeDrawer();
+                      } else if (e.key == "notifications") {
+                        Get.toNamed(AppRoutes.notificationsScreen);
+                        Scaffold.of(context).closeDrawer();
+                      }
+                      else if (e.key == "signOut") {
+                        Scaffold.of(context).closeDrawer();
+                        setState(() {
+                        });
+                        logoutDialog(context);
+
+                      } else {
+                        controller.setCurrentTab(getIndex(e.key));
+                        Scaffold.of(context).closeEndDrawer();
+                      }
+                    },
+                    child: Container(
+                      margin: EdgeInsetsDirectional.only(bottom: 40.h),
+                      child: Column(
+                        children: [
+                          SvgPicture.asset(e.value),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Text(
+                            e.key.tr,
+                            style: AppTextStyles.b16
+                                .copyWith(color: AppColors.primary),
+                          )
+                        ],
+                      ),
+                    ),
+                  ))
+                      .toList())
+            ],
+          ),
+        ),
+      );
+    });
+  }
 
   int getIndex(String val) {
     switch (val) {
@@ -317,5 +435,39 @@ class _HomeTabState extends State<HomeTab> {
       default:
         return 0;
     }
+  }
+  void logoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          insetPadding: EdgeInsets.zero,
+          contentPadding: EdgeInsets.zero,
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          content: Container(
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10)),
+            height: 110.h,
+            width: 337.w,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("doYouWantToLogOut".tr,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w700),),
+               Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text("yes".tr,style: TextStyle(fontSize: 14.sp,color: AppColors.primary,fontWeight: FontWeight.w700),),
+                    SizedBox(width: 20.w,),
+                    Text("no".tr,style: TextStyle(fontSize: 14.sp,color: AppColors.primary,fontWeight: FontWeight.w700),),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }

@@ -19,7 +19,7 @@ class _SortSheetWidgetState extends State<SortSheetWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 440.h,
       child: StatefulBuilder(
         builder: (BuildContext context, StateSetter setState) => Column(
