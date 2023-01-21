@@ -6,9 +6,8 @@ import 'package:paymyy/core/theme/app_colors.dart';
 import 'package:paymyy/core/theme/app_text_styles.dart';
 import 'package:paymyy/core/values/assets/app_icons.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/bills_tab/bills_page.dart';
-import 'package:paymyy/modules/mainPage/pages/Tabs/products_tab.dart';
+import 'package:paymyy/modules/products/views/pages/products_page/products_page.dart';
 
-import '../../../../routes/app_routes.dart';
 import '../../main_controller.dart';
 import '../Tabs/clientTab/clients_tab.dart';
 import '../Tabs/home_tab.dart';
@@ -18,7 +17,7 @@ class MainPage extends StatelessWidget {
   List<Widget> screens = [
     HomeTab(),
     const BillsPage(),
-    const ProductsTab(),
+    const ProductsPage(),
     const ClientsTab()
   ];
 
@@ -28,19 +27,20 @@ class MainPage extends StatelessWidget {
       builder: (logic) {
         return Scaffold(
           body: screens[controller.currentTab],
-          floatingActionButton: controller.isDrawer
-              ? const SizedBox()
-              : FloatingActionButton(
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Get.toNamed(AppRoutes.createPill);
-                  },
-                ),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
+          // floatingActionButton: controller.isDrawer
+          //     ? const SizedBox()
+          //     :
+          // FloatingActionButton(
+          //         child: const Icon(
+          //           Icons.add,
+          //           color: Colors.white,
+          //         ),
+          //         onPressed: () {
+          //           Get.toNamed(AppRoutes.createPill);
+          //         },
+          //       ),
+          // floatingActionButtonLocation:
+          //     FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: controller.isDrawer
               ? const SizedBox()
               : BottomAppBar(

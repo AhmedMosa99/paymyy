@@ -15,8 +15,8 @@ import 'package:paymyy/widgets/text_field_widget.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_text_styles.dart';
 import '../../../../../core/values/assets/app_images.dart';
+import '../../../../../widgets/custom_tab_widget.dart';
 import '../../../widgets/add_dialog_widget.dart';
-import '../../../widgets/custom_tab_widget.dart';
 
 class PillRedunduncyPage extends StatefulWidget {
   PillRedunduncyPage({Key? key}) : super(key: key);

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_text_styles.dart';
+import '../core/theme/app_colors.dart';
+import '../core/theme/app_text_styles.dart';
 
 class CustomTabWidget extends StatelessWidget {
   bool isSelected;
@@ -24,11 +24,12 @@ class CustomTabWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
-          child: Text(
-        name.tr,
-        style: AppTextStyles.b12
-            .copyWith(color: isSelected ? Colors.white : AppColors.black22),
-      )),
+        child: Text(
+          name.tr,
+          style: AppTextStyles.b12
+              .copyWith(color: isSelected ? Colors.white : AppColors.black22),
+        ),
+      ),
     );
   }
 }
