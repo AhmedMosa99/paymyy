@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:paymyy/core/theme/app_colors.dart';
 import 'package:paymyy/core/values/assets/app_images.dart';
 import 'package:paymyy/routes/app_routes.dart';
+import 'package:paymyy/shared/constant.dart';
 
 import '../../../data/providers/local_storage.provider.dart';
 
@@ -25,10 +26,14 @@ class _SplashPageState extends State<SplashPage> {
   initState() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      LocalStrorageProvider.isEnter
-          ? Get.offNamed(AppRoutes.login)
-          : Get.offNamed(AppRoutes.language);
-    });
+      // LocalStrorageProvider.isEnter
+      //     ? Get.offNamed(AppRoutes.login)
+      //     : Get.offNamed(AppRoutes.language);
+     if( token!=null){
+       Get.offNamed(AppRoutes.mainPage);
+      }else{
+      Get.offNamed(AppRoutes.login);
+    }});
     super.initState();
   }
 

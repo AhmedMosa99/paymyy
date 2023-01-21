@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:paymyy/core/theme/themes.dart';
 import 'package:pinput/pinput.dart';
 
@@ -9,7 +10,7 @@ class AppTextStyles {
   static PinTheme defaultPinTheme = PinTheme(
       width: 44.w,
       height: 48.h,
-      textStyle: const TextStyle(fontSize: 17, color: Colors.black),
+      textStyle:  TextStyle(fontSize: 17.sp, color: Colors.black,fontFamily: GoogleFonts.tajawal().fontFamily),
       margin: const EdgeInsets.symmetric(horizontal: 4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(3),

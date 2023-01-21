@@ -6,11 +6,13 @@ import 'package:get/get.dart';
 import 'package:paymyy/core/theme/app_colors.dart';
 import 'package:paymyy/core/theme/app_text_styles.dart';
 import 'package:paymyy/core/values/assets/app_icons.dart';
+import 'package:paymyy/data/local_data/share_pref.dart';
 import 'package:paymyy/routes/app_routes.dart';
 
 import '../../../../core/values/assets/app_images.dart';
 import '../../../../data/models/bill_model.dart';
 import '../../../../data/models/electronic_model.dart';
+import '../../../../shared/constant.dart';
 import '../../main_controller.dart';
 import '../../widgets/bill_widget.dart';
 import '../../widgets/custom_tab_widget.dart';
@@ -162,19 +164,25 @@ class _HomeTabState extends State<HomeTab> {
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemCount: electronics.length,
-        itemBuilder: (c, i) => Column(
+        itemBuilder: (c, i) =>
+            InkWell(
+              onTap: (){
+                Get.toNamed(AppRoutes.servicesScreen);
+              },
+              child: Column(
           children: [
-            Image.asset(electronics[i].image),
-            SizedBox(
-              height: 10.h,
-            ),
-            Text(
-              electronics[i].name,
-              style: AppTextStyles.b12.copyWith(color: Colors.black),
-              textAlign: TextAlign.center,
-            ),
+              Image.asset(electronics[i].image),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                electronics[i].name,
+                style: AppTextStyles.b12.copyWith(color: Colors.black),
+                textAlign: TextAlign.center,
+              ),
           ],
         ),
+            ),
       ),
     );
   }
@@ -263,62 +271,64 @@ class _HomeTabState extends State<HomeTab> {
         width: ScreenUtil.defaultSize.width * 0.55,
         child: Drawer(
           backgroundColor: Colors.white,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 75.h,
-              ),
-              Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: GestureDetector(
-                    onTap: () {
-                      Scaffold.of(context).closeEndDrawer();
-                    },
-                    child: Container(
-                        margin: EdgeInsetsDirectional.only(start: 20.w),
-                        child: const Icon(
-                          Icons.close,
-                          color: Colors.black,
-                        )),
-                  )),
-              ListView(
-                  shrinkWrap: true,
-                  children: drawers.entries
-                      .map((e) => GestureDetector(
-                            onTap: () {
-                              if (e.key == "requests") {
-                                Get.toNamed(AppRoutes.requests);
-                                Scaffold.of(context).closeEndDrawer();
-                              } else if (e.key == "payment_links") {
-                                Get.toNamed(AppRoutes.paymentLinks);
-                                Scaffold.of(context).closeEndDrawer();
-                              } else if (e.key == "returned_amounts") {
-                                Get.toNamed(AppRoutes.returnedAmounts);
-                                Scaffold.of(context).closeEndDrawer();
-                              } else {
-                                controller.setCurrentTab(getIndex(e.key));
-                                Scaffold.of(context).closeEndDrawer();
-                              }
-                            },
-                            child: Container(
-                              margin: EdgeInsetsDirectional.only(bottom: 40.h),
-                              child: Column(
-                                children: [
-                                  SvgPicture.asset(e.value),
-                                  SizedBox(
-                                    height: 5.h,
-                                  ),
-                                  Text(
-                                    e.key.tr,
-                                    style: AppTextStyles.b16
-                                        .copyWith(color: AppColors.primary),
-                                  )
-                                ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 75.h,
+                ),
+                Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: GestureDetector(
+                      onTap: () {
+                        Scaffold.of(context).closeEndDrawer();
+                      },
+                      child: Container(
+                          margin: EdgeInsetsDirectional.only(start: 20.w),
+                          child: const Icon(
+                            Icons.close,
+                            color: Colors.black,
+                          )),
+                    )),
+                ListView(
+                    shrinkWrap: true,
+                    children: drawers.entries
+                        .map((e) => GestureDetector(
+                              onTap: () {
+                                if (e.key == "requests") {
+                                  Get.toNamed(AppRoutes.requests);
+                                  Scaffold.of(context).closeEndDrawer();
+                                } else if (e.key == "payment_links") {
+                                  Get.toNamed(AppRoutes.paymentLinks);
+                                  Scaffold.of(context).closeEndDrawer();
+                                } else if (e.key == "returned_amounts") {
+                                  Get.toNamed(AppRoutes.returnedAmounts);
+                                  Scaffold.of(context).closeEndDrawer();
+                                } else {
+                                  controller.setCurrentTab(getIndex(e.key));
+                                  Scaffold.of(context).closeEndDrawer();
+                                }
+                              },
+                              child: Container(
+                                margin: EdgeInsetsDirectional.only(bottom: 40.h),
+                                child: Column(
+                                  children: [
+                                    SvgPicture.asset(e.value),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    Text(
+                                      e.key.tr,
+                                      style: AppTextStyles.b16
+                                          .copyWith(color: AppColors.primary),
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                          ))
-                      .toList())
-            ],
+                            ))
+                        .toList())
+              ],
+            ),
           ),
         ),
       );
@@ -458,7 +468,15 @@ class _HomeTabState extends State<HomeTab> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text("yes".tr,style: TextStyle(fontSize: 14.sp,color: AppColors.primary,fontWeight: FontWeight.w700),),
+                    InkWell(
+                        onTap: ()async{
+                          await SharePref.init();
+                          await SharePref.removeKey("token");
+                          token=null;
+                          await
+                          Get.offNamed(AppRoutes.login);
+                        },
+                        child: Text("yes".tr,style: TextStyle(fontSize: 14.sp,color: AppColors.primary,fontWeight: FontWeight.w700),)),
                     SizedBox(width: 20.w,),
                     Text("no".tr,style: TextStyle(fontSize: 14.sp,color: AppColors.primary,fontWeight: FontWeight.w700),),
                   ],

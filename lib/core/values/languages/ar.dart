@@ -52,8 +52,8 @@ Map<String, String> ar = {
   "pas_instructions":
       "الرجاء ادخال البريد الإلكتروني الخاص \n  بك لاسترجاع كلمة المرور",
   "send": "ارسال",
-  "single": "فردي",
-  "organization": "شركات",
+  "single": "مشروعات صغيرة",
+  "organization": "شركة",
   "register": "تسجيل",
   "confirm": "تاكيد",
   "products": "المنتجات",
@@ -201,4 +201,6 @@ Map<String, String> ar = {
   "doYouWantToLogOut": "هل تريد تسجيل الخروج",
   "yes": "نعم",
   "no": "لا",
+  "account details":"تفاصيل الحساب",
+
 };

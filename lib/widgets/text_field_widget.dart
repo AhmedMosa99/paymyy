@@ -19,10 +19,12 @@ class TextFieldWidget extends StatefulWidget {
   TextInputType type;
   FormFieldValidator validator;
   Widget? suffexWidget, prefexWidget;
+  String ?errorText;
 
   TextFieldWidget(
       {this.isPassord = false,
       this.suffexWidget,
+        this.errorText,
       this.prefexWidget,
       this.borderColor = const Color(0xffF8F8F8),
       this.vertical = 11,
@@ -63,6 +65,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                 enabledBorder: buildOutlineInputBorder(),
                 border: buildOutlineInputBorder(),
                 errorBorder: buildOutlineInputBorder(),
+                errorText: widget.errorText,
                 focusedErrorBorder: buildOutlineInputBorder(),
                 focusedBorder: buildOutlineInputBorder(),
                 labelText: widget.hintText,

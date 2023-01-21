@@ -27,5 +27,6 @@ class AppRoutes {
   static String termScreen = "/termScreen";
   static String supportScreen = "/supportScreen";
   static String notificationsScreen = "/notificationsScreen";
+  static String servicesScreen = "/servicesScreen";
 
 }

@@ -5,15 +5,14 @@ import 'package:get/get.dart';
 import 'package:paymyy/core/theme/app_colors.dart';
 import 'package:paymyy/core/theme/app_text_styles.dart';
 import 'package:paymyy/core/values/assets/app_icons.dart';
+import 'package:paymyy/core/values/assets/app_images.dart';
 import 'package:paymyy/data/providers/local_storage.provider.dart';
-import 'package:paymyy/modules/singup/register_controller.dart';
 import 'package:paymyy/routes/app_routes.dart';
 import 'package:paymyy/widgets/button_widget.dart';
-
-import '../../../core/values/assets/app_images.dart';
-import '../../../data/enums/stepper.dart';
-import '../../../data/models/stepper_model.dart';
-import '../../../widgets/shared_screen_widget.dart';
+import '../../../../data/enums/stepper.dart';
+import '../../../../data/models/stepper_model.dart';
+import '../../../../widgets/shared_screen_widget.dart';
+import '../../controllers/register_controller.dart';
 import '../widgets/first_page_widget.dart';
 import '../widgets/four_page_widget.dart';
 import '../widgets/second_page_widget.dart';
@@ -34,8 +33,6 @@ class _SignupPageState extends State<SignupPage> {
     super.initState();
     Get.put(RegisterController());
   }
-
-  int currentStep = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -79,16 +76,16 @@ class _SignupPageState extends State<SignupPage> {
                       top: 140.h, bottom: 20.h, start: 50.w, end: 50.w),
                   child: Row(
                     children: [
-                      buildStepper(model: steps[0]),
+                      buildStepper(model: controller.steps[0]),
                       const Expanded(
                           child: Divider(
                         color: Colors.grey,
                       )),
-                      buildStepper(model: steps[1]),
+                      buildStepper(model: controller.steps[1]),
                       const Expanded(child: Divider(color: Colors.grey)),
-                      buildStepper(model: steps[2]),
+                      buildStepper(model: controller.steps[2]),
                       const Expanded(child: Divider(color: Colors.grey)),
-                      buildStepper(model: steps[3]),
+                      buildStepper(model: controller.steps[3]),
                     ],
                   ),
                 ),
@@ -125,16 +122,6 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
-  nextStep() {
-    steps[currentStep].state = StepperState.Completed;
-    steps[currentStep + 1].state = StepperState.current;
-  }
-
-  previousStep() {
-    steps[currentStep].state = StepperState.notReached;
-    steps[currentStep - 1].state = StepperState.current;
-  }
-
   Container buildStepper({required StepperModel model}) {
     return Container(
       width: 33.w,
@@ -155,7 +142,13 @@ class _SignupPageState extends State<SignupPage> {
           )),
       child: Align(
         alignment: Alignment.center,
-        child: Text(model.num.toString()),
+        child: Text(
+          model.num.toString(),
+          style: TextStyle(
+              color: model.state == StepperState.Completed
+                  ? Colors.white
+                  : Colors.black),
+        ),
       ),
     );
   }
@@ -171,21 +164,21 @@ class _SignupPageState extends State<SignupPage> {
           ? Stack(
               children: [
                 Image.asset(AppImages.profile),
-                PositionedDirectional(
-                  bottom: 15.h,
-                  start: 0.h,
-                  child: Container(
-                      width: 22.w,
-                      height: 22.h,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
-                      ),
-                      child: SvgPicture.asset(
-                        AppIcons.edit,
-                        fit: BoxFit.scaleDown,
-                      )),
-                ),
+                // PositionedDirectional(
+                //   bottom: 15.h,
+                //   start: 0.h,
+                //   child: Container(
+                //       width: 22.w,
+                //       height: 22.h,
+                //       decoration: const BoxDecoration(
+                //         shape: BoxShape.circle,
+                //         color: Colors.white,
+                //       ),
+                //       child: SvgPicture.asset(
+                //         AppIcons.edit,
+                //         fit: BoxFit.scaleDown,
+                //       )),
+                // ),
               ],
             )
           : CircleAvatar(backgroundImage: FileImage(logic.updatedFile!)),
@@ -193,7 +186,8 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   Widget getBody() {
-    switch (currentStep) {
+    var controller = Get.put(RegisterController());
+    switch (controller.currentStep) {
       case 0:
         return const FirstPageWidget();
       case 1:
@@ -208,40 +202,31 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   Widget getButton() {
-    switch (currentStep) {
+    var controller = Get.put(RegisterController());
+    switch (controller.currentStep) {
       case 0:
-        return Container(
-          width: 280.w,
-          child: ButtonWidget(
-            horozontal: 0,
-            title: 'next'.tr,
-            function: () {
-              if (controller.firstKey.currentState!.validate())
-                setState(() {
-                  nextStep();
-                  currentStep++;
-                });
-            },
-          ),
-        );
+        return GetBuilder<RegisterController>(builder: (logic) {
+          return Container(
+            width: 280.w,
+            child: ButtonWidget(
+              horozontal: 0,
+              title: 'next'.tr,
+              function: () {
+                controller.firstStepFunction();
+              },
+            ),
+          );
+        });
       case 1:
         return CustomRow('next', () {
-          if (controller.secondKey.currentState!.validate())
-            setState(() {
-              nextStep();
-              currentStep++;
-            });
+      controller.secondStepFunction();
         });
       case 2:
         return CustomRow("register", () {
-          if (controller.thirdKey.currentState!.validate())
-            setState(() {
-              nextStep();
-              currentStep++;
-            });
+        controller.threeStepFunction();
         });
       case 3:
-        return Container(
+        return SizedBox(
           width: 280.w,
           child: ButtonWidget(
             horozontal: 0,
@@ -260,10 +245,9 @@ class _SignupPageState extends State<SignupPage> {
             horozontal: 0,
             title: 'next'.tr,
             function: () {
-              setState(() {
-                nextStep();
-                currentStep++;
-              });
+              controller.nextStep();
+              controller.currentStep++;
+              setState(() {});
             },
           ),
         );
@@ -291,10 +275,8 @@ class _SignupPageState extends State<SignupPage> {
       children: [
         GestureDetector(
           onTap: () {
-            setState(() {
-              previousStep();
-              currentStep--;
-            });
+            controller.previousStep();
+            controller.currentStep--;
           },
           child: Container(
             width: 135.w,

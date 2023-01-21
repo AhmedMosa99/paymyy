@@ -4,28 +4,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paymyy/core/theme/app_colors.dart';
-import 'package:paymyy/core/theme/app_text_styles.dart';
 import 'package:paymyy/core/theme/input_validations.dart';
 import 'package:paymyy/core/values/assets/app_icons.dart';
 import 'package:paymyy/core/values/assets/app_images.dart';
-import 'package:paymyy/modules/auth/controllers/login_controller.dart';
-import 'package:paymyy/routes/app_routes.dart';
-import 'package:paymyy/widgets/button_widget.dart';
-
 import '../../../../core/component/component.dart';
-import '../../../../widgets/shared_screen_widget.dart';
-import '../../../../widgets/text_field_widget.dart';
-
-class SupportScreen extends StatefulWidget {
-  const SupportScreen({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
   @override
-  State<SupportScreen> createState() => _SupportScreenState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _SupportScreenState extends State<SupportScreen> {
-  final controller = Get.put(LoginController());
-
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -80,7 +70,7 @@ class _SupportScreenState extends State<SupportScreen> {
                       child: defaultFormField(
                           type: TextInputType.emailAddress,
                           validate: (value) => InputValidations.validateEmail(value),
-                          controller: controller.emailController,
+                          controller: null,
                           hintText: 'example@gmail.com',
                           hintStyle: TextStyle(fontSize: 12.sp,fontFamily: GoogleFonts.tajawal().fontFamily,color: Colors.black,fontWeight: FontWeight.w600),
                           prefix: Icon(Icons.email_outlined,color: Colors.black,),
@@ -138,10 +128,7 @@ class _SupportScreenState extends State<SupportScreen> {
                                   focusedBorder: InputBorder.none,
                                   hintStyle: TextStyle(fontSize: 16.sp,fontFamily: GoogleFonts.tajawal().fontFamily,color: Colors.black,fontWeight: FontWeight.w600),
                                   hintText: "555194523",
-
                                 ),
-
-
                               ),
                             ),
                           )

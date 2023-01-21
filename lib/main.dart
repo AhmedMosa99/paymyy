@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:paymyy/data/local_data/share_pref.dart';
 import 'package:paymyy/routes/app_pages.dart';
 import 'package:paymyy/routes/app_routes.dart';
 import 'package:paymyy/routes/bindings/app_binding.dart';
@@ -13,10 +14,14 @@ import 'package:paymyy/shared/binding.dart';
 import 'core/theme/themes.dart';
 import 'core/values/languages/translations.dart';
 import 'data/providers/local_storage.provider.dart';
+import 'shared/constant.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  GetStorage.init();
+
+
+  await SharePref.init();
+  token= await SharePref.getData(key: 'token');
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,

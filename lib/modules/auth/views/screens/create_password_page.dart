@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:paymyy/modules/login/login_controller.dart';
+import 'package:paymyy/core/values/assets/app_images.dart';
+import 'package:paymyy/modules/auth/controllers/login_controller.dart';
 import 'package:paymyy/routes/app_routes.dart';
 import 'package:paymyy/widgets/button_widget.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/theme/input_validations.dart';
+import '../../../../core/values/assets/app_icons.dart';
+import '../../../../widgets/shared_screen_widget.dart';
+import '../../../../widgets/text_field_widget.dart';
+import '../widgets/build_text_widget.dart';
 
-import '../../../core/theme/app_text_styles.dart';
-import '../../../core/theme/input_validations.dart';
-import '../../../core/values/assets/app_icons.dart';
-import '../../../core/values/assets/app_images.dart';
-import '../../../widgets/shared_screen_widget.dart';
-import '../../../widgets/text_field_widget.dart';
-import '../../singup/widgets/build_text_widget.dart';
 
-class PassordReturnedPage extends StatelessWidget {
-  PassordReturnedPage({Key? key}) : super(key: key);
+class CreatePasswordPage extends StatelessWidget {
+  CreatePasswordPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class PassordReturnedPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: Text(
-          "pass_restore".tr,
+          "create_pass".tr,
           style: AppTextStyles.mb20.copyWith(color: Colors.black),
         ),
         leading: IconButton(
@@ -54,11 +54,15 @@ class PassordReturnedPage extends StatelessWidget {
         child: Stack(
           children: [
             Form(
-              key: controller.passwordKey,
+              key: controller.passwordConfirm,
               child: Column(
                 children: [
                   SizedBox(
-                    height: 140.h,
+                    height: 90.h,
+                  ),
+                  Text("strong_pass".tr),
+                  SizedBox(
+                    height: 26.h,
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 20.w),
@@ -66,48 +70,51 @@ class PassordReturnedPage extends StatelessWidget {
                       body: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                              margin: EdgeInsets.symmetric(vertical: 30.h),
-                              child: Image.asset(AppImages.passwordReturned)),
-                          Padding(
-                            padding: EdgeInsetsDirectional.only(start: 25.w),
-                            child: Text(
-                              "pas_instructions".tr,
-                              style: AppTextStyles.b18,
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
                           SizedBox(
-                            height: 45.h,
+                            height: 62.h,
                           ),
-                          TextWidget("email".tr),
+                          const TextWidget("password"),
+                          TextFieldWidget(
+                              validator: (value) =>
+                                  InputValidations.validatePassword(value,controller.passordConfirm.text),
+                              controller: controller.passwordNew,
+                              hintText: '•••••••',
+                              isPassord: true,
+                              obscure: true,
+                              prefix: AppImages.actionPassord,
+                              suffix: AppIcons.passwordSeen),
+                          const TextWidget("passord_confirm"),
                           TextFieldWidget(
                             validator: (value) =>
-                                InputValidations.validateEmail(value),
-                            controller: controller.emailReturned,
-                            hintText: 'example@gmail.com',
-                            prefix: AppIcons.email,
+                                InputValidations.validatePassword(
+                                    value, controller.passwordNew.text),
+                            controller: controller.passordConfirm,
+                            hintText: '•••••••',
+                            isPassord: true,
+                            obscure: true,
+                            prefix: AppImages.actionPassord,
+                            suffix: AppIcons.passwordSeen,
                           ),
                         ],
                       ),
-                      height: ScreenUtil.defaultSize.height * 0.8,
+                      height: ScreenUtil.defaultSize.height * 0.5,
                     ),
                   ),
                 ],
               ),
             ),
             PositionedDirectional(
-              bottom: 50.h,
+              bottom: 260.h,
               start: 45.w,
               child: Container(
                 width: 280.w,
                 child: ButtonWidget(
                     horozontal: 0,
-                    title: "send".tr,
+                    title: "confirm".tr,
                     function: () {
-                      if (controller.passwordKey.currentState!.validate())
-                        Get.toNamed(AppRoutes.codeCheck);
-                    }),
+                      if (controller.passwordConfirm.currentState!.validate()){
+                      controller.createPassword();
+                    }}),
               ),
             )
           ],

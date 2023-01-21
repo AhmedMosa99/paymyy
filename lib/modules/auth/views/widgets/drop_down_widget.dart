@@ -6,8 +6,7 @@ import 'package:get/get.dart';
 import 'package:paymyy/core/theme/app_colors.dart';
 import 'package:paymyy/core/theme/app_text_styles.dart';
 import 'package:paymyy/core/values/assets/app_icons.dart';
-
-import '../../../data/models/flag_model.dart';
+import 'package:paymyy/data/models/flag_model.dart';
 
 class DropDownWidget extends StatefulWidget {
   DropDownWidget({Key? key}) : super(key: key);

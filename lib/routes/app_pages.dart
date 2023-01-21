@@ -1,7 +1,4 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:paymyy/modules/login/pages/code_check_page.dart';
-import 'package:paymyy/modules/login/pages/create_password_page.dart';
-import 'package:paymyy/modules/login/pages/passord_returned_page.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/addTab/product_create_page.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/bills_tab/details_bill_page.dart';
 import 'package:paymyy/modules/on_boarding/pages/on_boarding_page.dart';
@@ -12,9 +9,13 @@ import 'package:paymyy/modules/profile/views/screens/settings_inotifaction_scree
 import 'package:paymyy/modules/profile/views/screens/settings_screen.dart';
 import 'package:paymyy/modules/profile/views/screens/soical_screen.dart';
 import 'package:paymyy/modules/profile/views/screens/support_screen.dart';
+import 'package:paymyy/modules/services/views/screens/services.dart';
 import 'package:paymyy/modules/splash/pages/language_page.dart';
-
-import '../modules/login/pages/login_page.dart';
+import '../modules/auth/views/screens/code_check_page.dart';
+import '../modules/auth/views/screens/create_password_page.dart';
+import '../modules/auth/views/screens/login_page.dart';
+import '../modules/auth/views/screens/passord_returned_page.dart';
+import '../modules/auth/views/screens/signup_page.dart';
 import '../modules/mainPage/pages/Tabs/bills_tab/display_bill_page.dart';
 import '../modules/mainPage/pages/Tabs/bills_tab/pill_redunduncy_page.dart';
 import '../modules/mainPage/pages/Tabs/clientTab/new_client_page.dart';
@@ -26,7 +27,6 @@ import '../modules/mainPage/pages/pages/payments_link_page.dart';
 import '../modules/mainPage/pages/pages/request_page.dart';
 import '../modules/mainPage/pages/pages/returned_amounts_page.dart';
 import '../modules/profile/views/screens/privacy_policy_screen.dart';
-import '../modules/singup/pages/signup_page.dart';
 import '../modules/splash/pages/splash_page.dart';
 import 'app_routes.dart';
 
@@ -53,7 +53,7 @@ class AppPages {
         name: AppRoutes.detailsPillRequest, page: () => DetailsRequestPage()),
     GetPage(name: AppRoutes.pillLinkCreate, page: () => BillLinkCreatePage()),
     GetPage(name: AppRoutes.pillLinkDetails, page: () => BillLinkDetailsPage()),
-    GetPage(name: AppRoutes.settingsScreen, page: () => SettingsScreen()),
+    GetPage(name: AppRoutes.settingsScreen, page: () => SettingsScreen(),),
     GetPage(name: AppRoutes.feesScreen, page: () => FeesScreen()),
     GetPage(name: AppRoutes.socialMediaScreen, page: () => SocialMediaScreen()),
     GetPage(name: AppRoutes.discountScreen, page: () => DiscountScreen()),
@@ -61,5 +61,6 @@ class AppPages {
     GetPage(name: AppRoutes.termScreen, page: () => TermScreen()),
     GetPage(name: AppRoutes.supportScreen, page: () => SupportScreen()),
     GetPage(name: AppRoutes.notificationsScreen, page: () => NotificationScreen()),
+    GetPage(name: AppRoutes.servicesScreen, page: () => ServicesScreen()),
   ];
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:paymyy/modules/singup/widgets/phone_field_widget.dart';
+
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_text_styles.dart';
@@ -10,6 +10,7 @@ import '../../../../../core/values/assets/app_icons.dart';
 import '../../../../../core/values/assets/app_images.dart';
 import '../../../../../widgets/button_widget.dart';
 import '../../../../../widgets/text_field_widget.dart';
+import '../../../../auth/views/widgets/phone_field_widget.dart';
 
 class NewClientPage extends StatelessWidget {
   TextEditingController email = TextEditingController();

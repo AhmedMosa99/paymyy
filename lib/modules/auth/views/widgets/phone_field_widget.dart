@@ -17,17 +17,20 @@ class PhoneFieldWidget extends StatefulWidget {
 }
 
 class _PhoneFieldWidgetState extends State<PhoneFieldWidget> {
-  List<String> phones = ['+965', '+972', '+970', '+08'];
+  // List<String> phones = ['+965', '+972', '+970', '+08'];
   String value = '+965';
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 40.h,
       margin:
           EdgeInsets.symmetric(horizontal: widget.horizontal.w, vertical: 11.h),
       child: TextFormField(
+        textAlignVertical: TextAlignVertical.top,
+        style: TextStyle(fontSize: 14.sp),
         controller: widget.controller,
-        keyboardType: TextInputType.phone,
+        keyboardType: TextInputType.text,
         decoration: InputDecoration(
             filled: true,
             fillColor: AppColors.greyf8,
@@ -44,7 +47,7 @@ class _PhoneFieldWidgetState extends State<PhoneFieldWidget> {
                       topStart: Radius.circular(10),
                       bottomStart: Radius.circular(10))),
               child: Row(
-                mainAxisSize: MainAxisSize.min,
+
                 children: [
                   SizedBox(
                     width: 15.w,
@@ -56,36 +59,37 @@ class _PhoneFieldWidgetState extends State<PhoneFieldWidget> {
                   SizedBox(
                     width: 9.w,
                   ),
-                  buildDropDownButton(),
+                  Text("+965",style: TextStyle(fontSize: 12.sp,fontWeight: FontWeight.w600),)
+                  // buildDropDownButton(),
                 ],
               ),
             )),
       ),
     );
   }
-
-  DropdownButton2<String> buildDropDownButton() {
-    return DropdownButton2(
-      dropdownWidth: 80.w,
-      underline: const SizedBox(),
-      value: value,
-      onChanged: (val) {
-        value = val!;
-        setState(() {});
-      },
-      items: phones
-          .map((e) => DropdownMenuItem(
-              value: e,
-              child: Container(
-                  margin: const EdgeInsetsDirectional.only(end: 10),
-                  child: Text(
-                    e,
-                    style: AppTextStyles.b10,
-                  ))))
-          .toList(),
-      icon: SvgPicture.asset(AppIcons.dropdown),
-    );
-  }
+  //
+  // DropdownButton2<String> buildDropDownButton() {
+  //   return DropdownButton2(
+  //     dropdownWidth: 80.w,
+  //     underline: const SizedBox(),
+  //     value: value,
+  //     onChanged: (val) {
+  //       value = val!;
+  //       setState(() {});
+  //     },
+  //     items: phones
+  //         .map((e) => DropdownMenuItem(
+  //             value: e,
+  //             child: Container(
+  //                 margin: const EdgeInsetsDirectional.only(end: 10),
+  //                 child: Text(
+  //                   e,
+  //                   style: AppTextStyles.b10,
+  //                 ))))
+  //         .toList(),
+  //     icon: SvgPicture.asset(AppIcons.dropdown),
+  //   );
+  // }
 
   OutlineInputBorder buildOutlineInputBorder() {
     return OutlineInputBorder(
