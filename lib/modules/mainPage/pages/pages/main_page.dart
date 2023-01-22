@@ -8,17 +8,17 @@ import 'package:paymyy/core/values/assets/app_icons.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/bills_tab/bills_page.dart';
 import 'package:paymyy/modules/products/views/pages/products_page/products_page.dart';
 
-import '../../../home/views/screens/home_tab.dart';
+import '../../../home/views/screens/clients_screen.dart';
+import '../../../home/views/screens/home_screen.dart';
 import '../../main_controller.dart';
-import '../Tabs/clientTab/clients_tab.dart';
 
 class MainPage extends StatelessWidget {
   final controller = Get.put(MainController());
   List<Widget> screens = [
-    HomeTab(),
+    HomeScreen(),
     const BillsPage(),
     const ProductsPage(),
-    const ClientsTab()
+    const ClientsScreen()
   ];
 
   @override

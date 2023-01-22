@@ -1,4 +1,5 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:paymyy/modules/home/views/screens/show_customer_screen.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/addTab/product_create_page.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/bills_tab/details_bill_page.dart';
 import 'package:paymyy/modules/on_boarding/pages/on_boarding_page.dart';
@@ -20,9 +21,9 @@ import '../modules/auth/views/screens/create_password_page.dart';
 import '../modules/auth/views/screens/login_page.dart';
 import '../modules/auth/views/screens/passord_returned_page.dart';
 import '../modules/auth/views/screens/signup_page.dart';
+import '../modules/home/views/screens/new_client_page.dart';
 import '../modules/mainPage/pages/Tabs/bills_tab/display_bill_page.dart';
 import '../modules/mainPage/pages/Tabs/bills_tab/pill_redunduncy_page.dart';
-import '../modules/mainPage/pages/Tabs/clientTab/new_client_page.dart';
 import '../modules/mainPage/pages/pages/_bill_link_create_page.dart';
 import '../modules/mainPage/pages/pages/bill_link_details_page.dart';
 import '../modules/mainPage/pages/pages/details_request_page.dart';
@@ -52,7 +53,7 @@ class AppPages {
     GetPage(name: AppRoutes.billDisplay, page: () => DisplayBillPage()),
     GetPage(name: AppRoutes.redunduncePill, page: () => PillRedunduncyPage()),
     GetPage(name: AppRoutes.addProductPage, page: () => ProductcreationPage()),
-    GetPage(name: AppRoutes.newClient, page: () => NewClientPage()),
+    GetPage(name: AppRoutes.newClient, page: () => NewClientScreen()),
     GetPage(name: AppRoutes.requests, page: () => RequestsPage()),
     GetPage(name: AppRoutes.returnedAmounts, page: () => ReturnedAmountsPage()),
     GetPage(name: AppRoutes.paymentLinks, page: () => PaymentLinkPage()),
@@ -81,5 +82,9 @@ class AppPages {
     GetPage(
         name: AppRoutes.productLinkDetailsPage,
         page: () => ProductDetailsLinkPage()),
+    GetPage(
+        name: AppRoutes.showCustomerScreen,
+        page: () => ShowCustomerScreen()),
+
   ];
 }

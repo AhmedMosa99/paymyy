@@ -9,8 +9,9 @@ import 'package:paymyy/core/values/assets/app_icons.dart';
 class PhoneFieldWidget extends StatefulWidget {
   TextEditingController controller;
   double horizontal;
+  String?value;
 
-  PhoneFieldWidget({required this.controller, this.horizontal = 35});
+  PhoneFieldWidget({required this.controller, this.horizontal = 35,this.value});
 
   @override
   State<PhoneFieldWidget> createState() => _PhoneFieldWidgetState();
@@ -27,12 +28,13 @@ class _PhoneFieldWidgetState extends State<PhoneFieldWidget> {
       margin:
           EdgeInsets.symmetric(horizontal: widget.horizontal.w, vertical: 11.h),
       child: TextFormField(
-        textAlignVertical: TextAlignVertical.top,
+        textAlignVertical: TextAlignVertical.center,
         style: TextStyle(fontSize: 14.sp),
         controller: widget.controller,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
             filled: true,
+            hintText: widget.value,
             fillColor: AppColors.greyf8,
             enabledBorder: buildOutlineInputBorder(),
             border: buildOutlineInputBorder(),

@@ -17,14 +17,14 @@ import '../../../../data/models/bill_model.dart';
 import '../../../../data/models/electronic_model.dart';
 import '../../../../shared/constant.dart';
 
-class HomeTab extends StatefulWidget {
-  HomeTab({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeTab> createState() => _HomeTabState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeTabState extends State<HomeTab> {
+class _HomeScreenState extends State<HomeScreen> {
   int currentSlider = 0;
 
   final controller = Get.find<MainController>();

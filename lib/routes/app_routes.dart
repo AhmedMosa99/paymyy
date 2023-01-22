@@ -18,6 +18,7 @@ class AppRoutes {
   static String detailsPillRequest = "/detailsPillRequest";
   static String pillLinkCreate = "/pillLinkCreate";
   static String pillLinkDetails = "/pillLinkDetails";
+  //profile page
   static String settingsScreen = "/settingsScreen";
   static String socialMediaScreen = "/socialMediaScreen";
   static String feesScreen = "/feesScreen";
@@ -27,6 +28,8 @@ class AppRoutes {
   static String supportScreen = "/supportScreen";
   static String notificationsScreen = "/notificationsScreen";
   static String servicesScreen = "/servicesScreen";
+  //
+  static String showCustomerScreen="/showCustomerScreen";
   // products page.v
   static String addProductLinkPage = "/add_product_link_page";
   static String addProductPage = "/add_product_page";

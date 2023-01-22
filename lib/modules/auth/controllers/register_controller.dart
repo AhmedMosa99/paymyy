@@ -37,7 +37,7 @@ class RegisterController extends GetxController {
   BanksModel? banksModel;
   String? varietiesSelect;
   String? bankSelect;
-  int ?idBank;
+    int ?idBank;
   StepOneModel? stepOneModel;
   StepTwoModel? stepTwoModel;
   StepThreeModel? stepThreeModel;

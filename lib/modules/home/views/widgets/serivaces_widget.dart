@@ -26,7 +26,7 @@ class ServicesWidget extends StatelessWidget {
             onTap: () {
               Get.to(ServicesScreen(
                 name: logic.servicesModel!.data![i].name!,
-                description: logic.servicesModel!.data![i]!.description,
+                description: logic.servicesModel!.data![i].description,
                 id: logic.servicesModel!.data![i].id!,
                 logo: logic.servicesModel!.data![i].logo,
                 assigned:logic.servicesModel!.data![i].assigned,
