@@ -109,8 +109,8 @@ class _SignupPageState extends State<SignupPage> {
                             },
                             child: selectProfile(logic),
                           )),
-                      PositionedDirectional(
-                          start: 38.w, bottom: 0.h, child: getButton())
+                           PositionedDirectional(
+                              start: 38.w, bottom: 0.h, child: getButton())
                     ],
                   ),
                 ),
@@ -219,11 +219,11 @@ class _SignupPageState extends State<SignupPage> {
         });
       case 1:
         return CustomRow('next', () {
-      controller.secondStepFunction();
+          controller.secondStepFunction();
         });
       case 2:
         return CustomRow("register", () {
-        controller.threeStepFunction();
+          controller.threeStepFunction();
         });
       case 3:
         return SizedBox(
