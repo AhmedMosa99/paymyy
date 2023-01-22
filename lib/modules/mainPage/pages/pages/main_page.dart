@@ -10,12 +10,12 @@ import 'package:paymyy/modules/products/views/pages/products_page/products_page.
 
 import '../../main_controller.dart';
 import '../Tabs/clientTab/clients_tab.dart';
-import '../Tabs/home_tab.dart';
+import '../../../home/views/screens/home_tab.dart';
 
 class MainPage extends StatelessWidget {
   final controller = Get.put(MainController());
   List<Widget> screens = [
-    HomeTab(),
+    HomeScreen(),
     const BillsPage(),
     const ProductsPage(),
     const ClientsTab()

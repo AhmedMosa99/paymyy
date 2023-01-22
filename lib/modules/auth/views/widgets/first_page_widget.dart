@@ -282,7 +282,7 @@ class _FirstPageWidgetState extends State<FirstPageWidget> {
                                             children: [
                                               Container(
                                                 padding: EdgeInsets.symmetric(
-                                                    vertical: 5.h, horizontal: 12.w),
+                                                    vertical: 12.h, horizontal: 12.w),
                                                 height: 40.h,
                                                 width: double.infinity,
                                                 decoration: BoxDecoration(
