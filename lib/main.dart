@@ -9,7 +9,8 @@ import 'package:paymyy/data/local_data/share_pref.dart';
 import 'package:paymyy/routes/app_pages.dart';
 import 'package:paymyy/routes/app_routes.dart';
 import 'package:paymyy/routes/bindings/app_binding.dart';
-import 'package:paymyy/shared/binding.dart';
+import 'package:paymyy/modules/auth/controllers/auth_binding.dart';
+import 'package:paymyy/shared/main_binding.dart';
 
 import 'core/theme/themes.dart';
 import 'core/values/languages/translations.dart';
@@ -18,10 +19,9 @@ import 'shared/constant.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-
-
   await SharePref.init();
   token= await SharePref.getData(key: 'token');
+  print(token);
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
           darkTheme: AppThemes.dark,
           themeMode: AppThemes.themeMode,
           translations: AppTranslations(),
-          initialBinding: MainBinding(),
+          initialBinding:token!=null? MainBinding():AuthBinding(),
           initialRoute: AppRoutes.splash,
         );
       },

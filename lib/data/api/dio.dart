@@ -2,6 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+import 'package:paymyy/data/local_data/share_pref.dart';
+import 'package:paymyy/routes/app_routes.dart';
 
 import '../../shared/constant.dart';
 
@@ -33,53 +36,50 @@ class ApiDio {
   }
 }
 //
-// class AppInterceptors extends Interceptor {
-//   @override
-//   void onError(DioError err, ErrorInterceptorHandler handler) async {
-//     print('error');
-//     // Assume 401 stands for token expired
-//     // if (err.response?.statusCode == 401) {
-//     //   print('error');
-//     //   await SharePref.setData(key: 'token', data: '');
-//     //   // token = await SharePref.getData(key: 'token');
-//     //   await SharePref.setData(key: 'isRegister', data: false);
-//     //   isRegister = false;
-//     //
-//     //   navigatorKey.currentState
-//     //       ?.pushNamedAndRemoveUntil(RoutesName.loginScreen, (route) => false);
-//     //   // var options = error.response!.requestOptions;
-//     //   // // If the token has been updated, repeat directly.
-//     //   // if (csrfToken != options.headers['csrfToken']) {
-//     //   //   options.headers['csrfToken'] = csrfToken;
-//     //   //   //repeat
-//     //   //   dio.fetch(options).then(
-//     //   //     (r) => handler.resolve(r),
-//     //   //     onError: (e) {
-//     //   //       handler.reject(e);
-//     //   //     },
-//     //   //   );
-//     //   //   return;
-//     //   // }
-//     //   // tokenDio.get('v1/get/user').then((d) {
-//     //   //   //update csrfToken
-//     //   //   options.headers['csrfToken'] = csrfToken = d.data['data']['token'];
-//     //   // }).then((e) {
-//     //   //   //repeat
-//     //   //   dio.fetch(options).then(
-//     //   //     (r) => handler.resolve(r),
-//     //   //     onError: (e) {
-//     //   //       handler.reject(e);
-//     //   //     },
-//     //   //   );
-//     //   // });
-//     //   // return;
-//     // }
-//     await _shouldRetry(err, handler);
-//
-//     return handler.next(err);
-//   }
-// }
-//
+class AppInterceptors extends Interceptor {
+  @override
+  void onError(DioError err, ErrorInterceptorHandler handler) async {
+    print('error');
+    // Assume 401 stands for token expired
+    if (err.response?.statusCode == 401) {
+      print('error');
+      await SharePref.init();
+      await SharePref.setData(key: 'token', data: '');
+      // token = await SharePref.getData(key: 'token');
+
+    Get.offAllNamed(AppRoutes.login);
+      // var options = error.response!.requestOptions;
+      // // If the token has been updated, repeat directly.
+      // if (csrfToken != options.headers['csrfToken']) {
+      //   options.headers['csrfToken'] = csrfToken;
+      //   //repeat
+      //   dio.fetch(options).then(
+      //     (r) => handler.resolve(r),
+      //     onError: (e) {
+      //       handler.reject(e);
+      //     },
+      //   );
+      //   return;
+      // }
+      // tokenDio.get('v1/get/user').then((d) {
+      //   //update csrfToken
+      //   options.headers['csrfToken'] = csrfToken = d.data['data']['token'];
+      // }).then((e) {
+      //   //repeat
+      //   dio.fetch(options).then(
+      //     (r) => handler.resolve(r),
+      //     onError: (e) {
+      //       handler.reject(e);
+      //     },
+      //   );
+      // });
+      // return;
+    }
+    // await _shouldRetry(err, handler);
+    return handler.next(err);
+  }
+}
+
 // _shouldRetry(DioError err, handler) async {
 //   if (err.type == DioErrorType.other && err.error is SocketException) {
 //     try {

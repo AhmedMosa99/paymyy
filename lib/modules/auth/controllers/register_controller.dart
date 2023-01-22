@@ -48,6 +48,10 @@ class RegisterController extends GetxController {
   bool isCompleted=false;
   bool val=false;
   bool isLoading=false;
+  bool isLoadingOne=false;
+  bool isLoadingTwo=false;
+  bool isLoadingThree=false;
+
   List<StepperModel> steps = [
     StepperModel(num: 1, state: StepperState.current),
     StepperModel(num: 2, state: StepperState.notReached),
@@ -100,6 +104,8 @@ class RegisterController extends GetxController {
   firstStepFunction() async {
     if (varietiesSelect!=null) {
       if (firstKey.currentState!.validate()) {
+        isLoadingOne=true;
+        update();
         stepOneModel = await AuthDio.validationStepOne(
             bussinessType: groupVal == 1 ? "Home_Bussiness" : "Company",
             legalName: groupVal == 2 ? orgName.text : "",
@@ -108,6 +114,7 @@ class RegisterController extends GetxController {
             phoneNumber: phone.text,
             categoryId: idSelect,
             businessEmail: emailFirst.text);
+        isLoading=false;
         if (stepOneModel!.status == true) {
           nextStep();
           currentStep++;
@@ -120,9 +127,12 @@ class RegisterController extends GetxController {
       Get.snackbar("عذرا", "الصنف مطلوب",
           backgroundColor: AppColors.primary, colorText: Colors.white);
     }
+    update();
   }
   secondStepFunction() async {
     if (secondKey.currentState!.validate()) {
+      isLoadingTwo=true;
+      update();
       stepTwoModel = await AuthDio.validationStepTwo(
         bussinessType: groupVal == 1 ? "Home_Bussiness" : "Company",
         ownerEmail: email.text,
@@ -133,6 +143,8 @@ class RegisterController extends GetxController {
         passwordConfirmation: passordConfirm.text,
         businessEmail: email.text,
       );
+      isLoadingTwo=false;
+
       if (stepTwoModel!.status == true) {
         nextStep();
         currentStep++;
@@ -141,6 +153,7 @@ class RegisterController extends GetxController {
             backgroundColor: AppColors.primary, colorText: Colors.white);
       }
     }
+    update();
   }
   threeStepFunction() async {
   if(val){
@@ -161,6 +174,7 @@ class RegisterController extends GetxController {
         Get.snackbar("عذرا", stepThreeModel!.message!,
             backgroundColor: AppColors.primary, colorText: Colors.white);
       }
+      update();
     }
   }else{
     Get.snackbar("عذرا", "يرجى الموافقة علي سياسة الخصوصية",
