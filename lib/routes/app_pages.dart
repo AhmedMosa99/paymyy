@@ -2,6 +2,8 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/addTab/product_create_page.dart';
 import 'package:paymyy/modules/mainPage/pages/Tabs/bills_tab/details_bill_page.dart';
 import 'package:paymyy/modules/on_boarding/pages/on_boarding_page.dart';
+import 'package:paymyy/modules/products/views/pages/add_product_link_page.dart';
+import 'package:paymyy/modules/products/views/pages/product_link_details_page.dart';
 import 'package:paymyy/modules/profile/views/screens/discount_screen.dart';
 import 'package:paymyy/modules/profile/views/screens/fees_screen.dart';
 import 'package:paymyy/modules/profile/views/screens/notifactions_screen.dart';
@@ -11,6 +13,8 @@ import 'package:paymyy/modules/profile/views/screens/soical_screen.dart';
 import 'package:paymyy/modules/profile/views/screens/support_screen.dart';
 import 'package:paymyy/modules/services/views/screens/services.dart';
 import 'package:paymyy/modules/splash/pages/language_page.dart';
+import 'package:paymyy/shared/main_binding.dart';
+
 import '../modules/auth/views/screens/code_check_page.dart';
 import '../modules/auth/views/screens/create_password_page.dart';
 import '../modules/auth/views/screens/login_page.dart';
@@ -37,7 +41,10 @@ class AppPages {
     GetPage(name: AppRoutes.boarding, page: () => OnboardingPage()),
     GetPage(name: AppRoutes.login, page: () => LoginPage()),
     GetPage(name: AppRoutes.signup, page: () => SignupPage()),
-    GetPage(name: AppRoutes.mainPage, page: () => MainPage(),binding: MainBinding()),
+    GetPage(
+        name: AppRoutes.mainPage,
+        page: () => MainPage(),
+        binding: MainBinding()),
     GetPage(name: AppRoutes.passordReturned, page: () => PassordReturnedPage()),
     GetPage(name: AppRoutes.codeCheck, page: () => CodeCheckPage()),
     GetPage(name: AppRoutes.createPassword, page: () => CreatePasswordPage()),

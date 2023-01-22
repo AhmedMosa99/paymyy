@@ -27,7 +27,7 @@ class AppRoutes {
   static String supportScreen = "/supportScreen";
   static String notificationsScreen = "/notificationsScreen";
   static String servicesScreen = "/servicesScreen";
-  // products page.
+  // products page.v
   static String addProductLinkPage = "/add_product_link_page";
   static String addProductPage = "/add_product_page";
   static String productLinkDetailsPage = "/product_link_details_page";
