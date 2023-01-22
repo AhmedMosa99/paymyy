@@ -1,27 +1,21 @@
-import 'dart:async';
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:paymyy/data/local_data/share_pref.dart';
 import 'package:paymyy/routes/app_routes.dart';
 
-import '../../shared/constant.dart';
-
 class ApiDio {
   final dio = createDio();
+
   final tokenDio = Dio(BaseOptions(baseUrl: ''));
-
   ApiDio._internal();
-
   static final _singleton = ApiDio._internal();
 
   factory ApiDio() => _singleton;
 
   static Dio createDio() {
     var dio = Dio(BaseOptions(
-        baseUrl:'https://paymyy-api.ameerabunada.com/api/',
-        receiveTimeout: 15000, // 15 seconds
+        baseUrl: 'https://paymyy-api.ameerabunada.com/api/',
+        receiveTimeout: 15000, // 15 secondsn
         connectTimeout: 15000,
         sendTimeout: 15000,
         contentType: Headers.jsonContentType,
@@ -35,6 +29,7 @@ class ApiDio {
     return dio;
   }
 }
+
 //
 class AppInterceptors extends Interceptor {
   @override
@@ -47,7 +42,7 @@ class AppInterceptors extends Interceptor {
       await SharePref.setData(key: 'token', data: '');
       // token = await SharePref.getData(key: 'token');
 
-    Get.offAllNamed(AppRoutes.login);
+      Get.offAllNamed(AppRoutes.login);
       // var options = error.response!.requestOptions;
       // // If the token has been updated, repeat directly.
       // if (csrfToken != options.headers['csrfToken']) {

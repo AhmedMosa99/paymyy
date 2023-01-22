@@ -6,7 +6,7 @@ import 'package:paymyy/core/theme/app_text_styles.dart';
 
 class TextFieldWidget extends StatefulWidget {
   String hintText;
-  TextEditingController controller;
+  TextEditingController? controller;
   String prefix;
   Color fillColor, borderColor;
   bool blackLabel;
@@ -19,12 +19,12 @@ class TextFieldWidget extends StatefulWidget {
   TextInputType type;
   FormFieldValidator validator;
   Widget? suffexWidget, prefexWidget;
-  String ?errorText;
+  String? errorText;
 
   TextFieldWidget(
       {this.isPassord = false,
       this.suffexWidget,
-        this.errorText,
+      this.errorText,
       this.prefexWidget,
       this.borderColor = const Color(0xffF8F8F8),
       this.vertical = 11,
@@ -38,7 +38,7 @@ class TextFieldWidget extends StatefulWidget {
       this.type = TextInputType.text,
       this.prefix = '',
       this.suffix = '',
-      required this.controller,
+      this.controller,
       required this.hintText});
 
   @override

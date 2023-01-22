@@ -7,7 +7,7 @@ import 'package:paymyy/routes/app_routes.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/values/assets/app_icons.dart';
-import '../../widgets/custom_tab_widget.dart';
+import '../../../../widgets/custom_tab_widget.dart';
 import '../../widgets/sort_sheet_widget.dart';
 
 class RequestsPage extends StatefulWidget {

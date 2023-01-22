@@ -11,7 +11,6 @@ class AppRoutes {
   static String detailsBill = "/detailsBill";
   static String billDisplay = "/billDisplay";
   static String redunduncePill = "/redundncePill";
-  static String createPill = "/createPill";
   static String newClient = "/newClient";
   static String requests = "/requests";
   static String paymentLinks = "/paymentLinks";
@@ -28,5 +27,8 @@ class AppRoutes {
   static String supportScreen = "/supportScreen";
   static String notificationsScreen = "/notificationsScreen";
   static String servicesScreen = "/servicesScreen";
-
+  // products page.v
+  static String addProductLinkPage = "/add_product_link_page";
+  static String addProductPage = "/add_product_page";
+  static String productLinkDetailsPage = "/product_link_details_page";
 }

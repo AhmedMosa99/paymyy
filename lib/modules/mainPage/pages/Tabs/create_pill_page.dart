@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ import 'package:paymyy/widgets/text_field_widget.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/values/assets/app_images.dart';
-import '../../widgets/custom_tab_widget.dart';
+import '../../../../widgets/custom_tab_widget.dart';
 
 class CreatePillPage extends StatefulWidget {
   CreatePillPage({Key? key}) : super(key: key);
@@ -191,11 +192,11 @@ class _CreatePillPageState extends State<CreatePillPage> {
           },
           items: items
               .map((e) => DropdownMenuItem(
-              value: e,
-              child: Text(
-                e,
-                style: AppTextStyles.b14.copyWith(color: AppColors.greyf8),
-              )))
+                  value: e,
+                  child: Text(
+                    e,
+                    style: AppTextStyles.b14.copyWith(color: AppColors.greyf8),
+                  )))
               .toList()),
     );
   }
@@ -290,42 +291,42 @@ class _CreatePillPageState extends State<CreatePillPage> {
         margin: EdgeInsets.symmetric(horizontal: 26.w, vertical: 11.h),
         child: Center(
             child: TextField(
-              controller: dateinput,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: AppColors.greyf8,
-                enabledBorder: buildOutlineInputBorder(),
-                border: buildOutlineInputBorder(),
-                labelText: "1\12\2022",
-                labelStyle: AppTextStyles.r12.copyWith(color: AppColors.greyb4),
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-                prefixIcon: Image.asset(
-                  AppImages.date,
-                  fit: BoxFit.scaleDown,
-                ),
-              ),
-              readOnly: true,
-              onTap: () async {
-                DateTime? pickedDate = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(2000),
-                    //DateTime.now() - not to allow to choose before today.
-                    lastDate: DateTime(2101));
-                if (pickedDate != null) {
-                  print(
-                      pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                  String formattedDate =
+          controller: dateinput,
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: AppColors.greyf8,
+            enabledBorder: buildOutlineInputBorder(),
+            border: buildOutlineInputBorder(),
+            labelText: "1\12\2022",
+            labelStyle: AppTextStyles.r12.copyWith(color: AppColors.greyb4),
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+            prefixIcon: Image.asset(
+              AppImages.date,
+              fit: BoxFit.scaleDown,
+            ),
+          ),
+          readOnly: true,
+          onTap: () async {
+            DateTime? pickedDate = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(2000),
+                //DateTime.now() - not to allow to choose before today.
+                lastDate: DateTime(2101));
+            if (pickedDate != null) {
+              print(
+                  pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+              String formattedDate =
                   DateFormat('yyyy/MM/dd').format(pickedDate);
-                  setState(() {
-                    dateinput.text =
-                        formattedDate; //set output date to TextField value.
-                  });
-                } else {
-                  print("Date is not selected");
-                }
-              },
-            )));
+              setState(() {
+                dateinput.text =
+                    formattedDate; //set output date to TextField value.
+              });
+            } else {
+              print("Date is not selected");
+            }
+          },
+        )));
   }
 
   OutlineInputBorder buildOutlineInputBorder() {

@@ -7,8 +7,8 @@ import 'package:paymyy/core/theme/app_text_styles.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/values/assets/app_icons.dart';
 import '../../../../../data/models/bill_model.dart';
+import '../../../../../widgets/custom_tab_widget.dart';
 import '../../../widgets/bill_widget.dart';
-import '../../../widgets/custom_tab_widget.dart';
 import '../../../widgets/sort_sheet_widget.dart';
 
 class BillsPage extends StatefulWidget {

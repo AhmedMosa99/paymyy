@@ -7,30 +7,27 @@ import 'package:paymyy/core/theme/app_colors.dart';
 import 'package:paymyy/core/theme/app_text_styles.dart';
 import 'package:paymyy/core/values/assets/app_icons.dart';
 import 'package:paymyy/data/local_data/share_pref.dart';
+import 'package:paymyy/modules/mainPage/main_controller.dart';
+import 'package:paymyy/modules/mainPage/widgets/bill_widget.dart';
 import 'package:paymyy/routes/app_routes.dart';
+import 'package:paymyy/widgets/custom_tab_widget.dart';
 
 import '../../../../core/values/assets/app_images.dart';
 import '../../../../data/models/bill_model.dart';
 import '../../../../data/models/electronic_model.dart';
 import '../../../../shared/constant.dart';
-import '../widgets/serivaces_widget.dart';
-import '../../../mainPage/main_controller.dart';
-import '../../../mainPage/widgets/bill_widget.dart';
-import '../../../mainPage/widgets/custom_tab_widget.dart';
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+class HomeTab extends StatefulWidget {
+  HomeTab({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeTab> createState() => _HomeTabState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeTabState extends State<HomeTab> {
   int currentSlider = 0;
 
   final controller = Get.find<MainController>();
-
-
 
   Map<String, String> drawers = {
     "afawateer": AppIcons.tab22,
@@ -48,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
     "signOut": AppIcons.signOut,
   };
 
-
   List<String> sliders = [
     "waiting_transaction",
     "transaction_number",
@@ -61,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       onEndDrawerChanged: (x) => controller.setDrawerOPen(x),
-      onDrawerChanged: (x)=>controller.setDrawerOPen(x),
+      onDrawerChanged: (x) => controller.setDrawerOPen(x),
       appBar: AppBar(
         toolbarHeight: 100.h,
         backgroundColor: Colors.transparent,
@@ -78,30 +74,28 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         elevation: 0,
-        leading: Builder(
-          builder: (context) {
-            return GestureDetector(
-              onTap: (){
-                Scaffold.of(context).openDrawer();
-              },
-              child: Container(
-                  margin: EdgeInsetsDirectional.only(start: 16.w),
-                  child: const CircleAvatar(
-                    backgroundImage: AssetImage(AppImages.profile),
-                    radius: 35,
-                  )),
-            );
-          }
-        ),
+        leading: Builder(builder: (context) {
+          return GestureDetector(
+            onTap: () {
+              Scaffold.of(context).openDrawer();
+            },
+            child: Container(
+                margin: EdgeInsetsDirectional.only(start: 16.w),
+                child: const CircleAvatar(
+                  backgroundImage: AssetImage(AppImages.profile),
+                  radius: 35,
+                )),
+          );
+        }),
       ),
       endDrawer: buildDrawer(),
-      drawer:buildStartDrawer(),
+      drawer: buildStartDrawer(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             buildCarouselSlider(),
-            ServicesWidget(),
+            buildElectronics(),
             buildContainerCondition(),
             SizedBox(
               height: 20.h,
@@ -167,13 +161,12 @@ class _HomeScreenState extends State<HomeScreen> {
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemCount: electronics.length,
-        itemBuilder: (c, i) =>
-            InkWell(
-              onTap: (){
-                Get.toNamed(AppRoutes.servicesScreen);
-              },
-              child: Column(
-          children: [
+        itemBuilder: (c, i) => InkWell(
+          onTap: () {
+            Get.toNamed(AppRoutes.servicesScreen);
+          },
+          child: Column(
+            children: [
               Image.asset(electronics[i].image),
               SizedBox(
                 height: 10.h,
@@ -183,9 +176,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: AppTextStyles.b12.copyWith(color: Colors.black),
                 textAlign: TextAlign.center,
               ),
-          ],
+            ],
+          ),
         ),
-            ),
       ),
     );
   }
@@ -313,7 +306,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 }
                               },
                               child: Container(
-                                margin: EdgeInsetsDirectional.only(bottom: 40.h),
+                                margin:
+                                    EdgeInsetsDirectional.only(bottom: 40.h),
                                 child: Column(
                                   children: [
                                     SvgPicture.asset(e.value),
@@ -337,6 +331,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     });
   }
+
   Builder buildStartDrawer() {
     return Builder(builder: (context) {
       return Container(
@@ -349,7 +344,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 75.h,
               ),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 10.w),
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Align(
                     alignment: Alignment.topLeft,
                     child: GestureDetector(
@@ -370,18 +365,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 decoration: BoxDecoration(shape: BoxShape.circle),
                 child: Stack(
                   children: [
-                    Image.asset('assets/images/profile.png',fit: BoxFit.fill,),
+                    Image.asset(
+                      'assets/images/profile.png',
+                      fit: BoxFit.fill,
+                    ),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: Container(
-                          width: 22.w,height: 22.h,decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                          color: Colors.white,
-                        border: Border.all(color: Color(0xff878787),width: .5.w)
-
-                      ),
-                      child: Center(child: Icon(Icons.edit,color: Color(0xff878787),size: 18.w,))
-                      ),
+                          width: 22.w,
+                          height: 22.h,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                              border: Border.all(
+                                  color: Color(0xff878787), width: .5.w)),
+                          child: Center(
+                              child: Icon(
+                            Icons.edit,
+                            color: Color(0xff878787),
+                            size: 18.w,
+                          ))),
                     )
                   ],
                 ),
@@ -390,45 +393,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   shrinkWrap: true,
                   children: starDrawers.entries
                       .map((e) => GestureDetector(
-                    onTap: () {
-                      if (e.key == "settings") {
-                        Get.toNamed(AppRoutes.settingsScreen);
-                        Scaffold.of(context).closeDrawer();
-                      } else if (e.key == "support") {
-                        Get.toNamed(AppRoutes.supportScreen);
-                        Scaffold.of(context).closeDrawer();
-                      } else if (e.key == "notifications") {
-                        Get.toNamed(AppRoutes.notificationsScreen);
-                        Scaffold.of(context).closeDrawer();
-                      }
-                      else if (e.key == "signOut") {
-                        Scaffold.of(context).closeDrawer();
-                        setState(() {
-                        });
-                        logoutDialog(context);
-
-                      } else {
-                        controller.setCurrentTab(getIndex(e.key));
-                        Scaffold.of(context).closeEndDrawer();
-                      }
-                    },
-                    child: Container(
-                      margin: EdgeInsetsDirectional.only(bottom: 40.h),
-                      child: Column(
-                        children: [
-                          SvgPicture.asset(e.value),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          Text(
-                            e.key.tr,
-                            style: AppTextStyles.b16
-                                .copyWith(color: AppColors.primary),
-                          )
-                        ],
-                      ),
-                    ),
-                  ))
+                            onTap: () {
+                              if (e.key == "settings") {
+                                Get.toNamed(AppRoutes.settingsScreen);
+                                Scaffold.of(context).closeDrawer();
+                              } else if (e.key == "support") {
+                                Get.toNamed(AppRoutes.supportScreen);
+                                Scaffold.of(context).closeDrawer();
+                              } else if (e.key == "notifications") {
+                                Get.toNamed(AppRoutes.notificationsScreen);
+                                Scaffold.of(context).closeDrawer();
+                              } else if (e.key == "signOut") {
+                                Scaffold.of(context).closeDrawer();
+                                setState(() {});
+                                logoutDialog(context);
+                              } else {
+                                controller.setCurrentTab(getIndex(e.key));
+                                Scaffold.of(context).closeEndDrawer();
+                              }
+                            },
+                            child: Container(
+                              margin: EdgeInsetsDirectional.only(bottom: 40.h),
+                              child: Column(
+                                children: [
+                                  SvgPicture.asset(e.value),
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
+                                  Text(
+                                    e.key.tr,
+                                    style: AppTextStyles.b16
+                                        .copyWith(color: AppColors.primary),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ))
                       .toList())
             ],
           ),
@@ -449,6 +449,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return 0;
     }
   }
+
   void logoutDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -459,29 +460,45 @@ class _HomeScreenState extends State<HomeScreen> {
           clipBehavior: Clip.antiAliasWithSaveLayer,
           content: Container(
             padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
             height: 110.h,
             width: 337.w,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("doYouWantToLogOut".tr,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w700),),
-               Spacer(),
+                Text(
+                  "doYouWantToLogOut".tr,
+                  style:
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w700),
+                ),
+                Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     InkWell(
-                        onTap: ()async{
+                        onTap: () async {
                           await SharePref.init();
                           await SharePref.removeKey("token");
-                          token=null;
-                          await
-                          Get.offNamed(AppRoutes.login);
+                          token = null;
+                          await Get.offNamed(AppRoutes.login);
                         },
-                        child: Text("yes".tr,style: TextStyle(fontSize: 14.sp,color: AppColors.primary,fontWeight: FontWeight.w700),)),
-                    SizedBox(width: 20.w,),
-                    Text("no".tr,style: TextStyle(fontSize: 14.sp,color: AppColors.primary,fontWeight: FontWeight.w700),),
+                        child: Text(
+                          "yes".tr,
+                          style: TextStyle(
+                              fontSize: 14.sp,
+                              color: AppColors.primary,
+                              fontWeight: FontWeight.w700),
+                        )),
+                    SizedBox(
+                      width: 20.w,
+                    ),
+                    Text(
+                      "no".tr,
+                      style: TextStyle(
+                          fontSize: 14.sp,
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.w700),
+                    ),
                   ],
                 )
               ],
